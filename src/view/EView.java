@@ -1,5 +1,6 @@
 package view;
 
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
@@ -9,6 +10,8 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.ui.part.ViewPart;
 
+import admin.arboles.LeeGrafosAST;
+
 public class EView extends ViewPart {
 
 	public EView() {
@@ -17,6 +20,10 @@ public class EView extends ViewPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
+		try {
+			LeeGrafosAST.saca();
+		} catch (JavaModelException e) {
+		}
 		Canvas canvas = new Canvas(parent,SWT.NONE);
 		Menu menu= new Menu(canvas);
 		MenuItem back=new MenuItem(menu, SWT.PUSH);

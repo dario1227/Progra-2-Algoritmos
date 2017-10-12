@@ -21,6 +21,7 @@ public class ViewFactory {
 		MenuItem step=new MenuItem(menu, SWT.PUSH);
 		step.setText("Step In");
 		Image imagen=null;
+		
 		 step.addListener(SWT.Selection, new Listener()
 		    {
 		        @Override
