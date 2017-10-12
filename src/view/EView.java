@@ -13,17 +13,15 @@ import org.eclipse.ui.part.ViewPart;
 import admin.arboles.LeeGrafosAST;
 
 public class EView extends ViewPart {
-
 	public EView() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void createPartControl(Composite parent) {
-		try {
-			LeeGrafosAST.saca();
-		} catch (JavaModelException e) {
-		}
+//		try {
+//			LeeGrafosAST.saca();
+//		} catch (JavaModelException e) {
+//		}
 		Canvas canvas = new Canvas(parent,SWT.NONE);
 		Menu menu= new Menu(canvas);
 		MenuItem back=new MenuItem(menu, SWT.PUSH);
