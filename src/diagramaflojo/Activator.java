@@ -3,7 +3,7 @@ package diagramaflojo;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import admin.arboles.MAENOSE;
+import admin.arboles.LeeGrafosAST;
 
 /**
  * The activator class controls the plug-in life cycle

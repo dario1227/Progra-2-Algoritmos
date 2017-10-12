@@ -18,7 +18,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 @SuppressWarnings({ "unused", "restriction" })
-public class MAENOSE {
+public class LeeGrafosAST {
 
 @SuppressWarnings("restriction")
 public static void saca() throws JavaModelException {
