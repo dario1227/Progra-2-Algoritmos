@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DiagramaFlojo
-Bundle-SymbolicName: DiagramaFlojo
+Bundle-SymbolicName: DiagramaFlojo;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: diagramaflojo.Activator
 Require-Bundle: org.eclipse.ui,

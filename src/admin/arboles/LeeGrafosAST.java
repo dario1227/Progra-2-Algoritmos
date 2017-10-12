@@ -20,7 +20,6 @@ import org.eclipse.ui.PlatformUI;
 @SuppressWarnings({ "unused", "restriction" })
 public class LeeGrafosAST {
 
-@SuppressWarnings("restriction")
 public static void saca() throws JavaModelException {
 	IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 	IEditorPart activeEditor = page.getActiveEditor();
