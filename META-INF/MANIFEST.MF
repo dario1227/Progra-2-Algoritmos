@@ -16,6 +16,7 @@ Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.jdt.core,
  org.eclipse.jdt.core.dom,
  org.eclipse.jdt.internal.ui.javaeditor,
+ org.eclipse.ui.texteditor,
  org.eclipse.ui.texteditor.link,
  org.eclipse.ui.texteditor.quickdiff,
  org.eclipse.ui.texteditor.rulers,
