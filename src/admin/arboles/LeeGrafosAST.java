@@ -21,6 +21,7 @@ import org.eclipse.ui.PlatformUI;
 public class LeeGrafosAST {
 
 public static void saca() throws JavaModelException {
+	try {
 	IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 	IEditorPart activeEditor = page.getActiveEditor();
 	ICompilationUnit root=null;
@@ -33,6 +34,8 @@ public static void saca() throws JavaModelException {
 	MethodVisitor visitante = new MethodVisitor();
 	compilado.accept(visitante);
 	revisaContenido(visitante.methods);
+	}
+	catch(Exception e) {}
 }
 private static void revisaContenido(List<MethodDeclaration> methods) {
 	for(MethodDeclaration metodo:methods) {
