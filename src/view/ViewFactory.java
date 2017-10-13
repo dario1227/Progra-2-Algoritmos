@@ -1,5 +1,11 @@
 package view;
 
+import org.eclipse.jdt.core.dom.Block;
+import org.eclipse.jdt.core.dom.EnhancedForStatement;
+import org.eclipse.jdt.core.dom.ExpressionStatement;
+import org.eclipse.jdt.core.dom.ForStatement;
+import org.eclipse.jdt.core.dom.IfStatement;
+import org.eclipse.jdt.core.dom.WhileStatement;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Canvas;
@@ -54,7 +60,7 @@ public class ViewFactory {
 		        @Override
 		        public void handleEvent(Event event)
 		        {
-		        	debuggerImage(result);
+		        	Labels.debuggerImage(result);
 		        }
 		        
 		    });
@@ -63,14 +69,5 @@ public class ViewFactory {
 		return result.label;
 		
 	}
-	public static void debuggerImage(Labels result) {
-		Image imagenActual=result.label.getBackgroundImage();
-		if(imagenActual==result.image) {
-			result.label.setBackgroundImage(result.imageB);
-		}
-		else{
-			result.label.setBackgroundImage(result.image);
-		}
-		
-		}
+
 }
