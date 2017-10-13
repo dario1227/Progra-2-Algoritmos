@@ -17,10 +17,8 @@ public class Ejecutar extends AbstractHandler{
 			LeeGrafosAST.saca();
 			HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView("DiagramaFlojo.view1");
 		} catch (PartInitException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (JavaModelException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

@@ -18,10 +18,6 @@ public class EView extends ViewPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
-//		try {
-//			LeeGrafosAST.saca();
-//		} catch (JavaModelException e) {
-//		}
 		Canvas canvas = new Canvas(parent,SWT.NONE);
 		Menu menu= new Menu(canvas);
 		MenuItem back=new MenuItem(menu, SWT.PUSH);
