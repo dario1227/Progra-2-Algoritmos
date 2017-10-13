@@ -1,4 +1,5 @@
 package admin.arboles;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -12,6 +13,7 @@ import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
+import org.eclipse.jdt.core.dom.Statement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.eclipse.jdt.internal.ui.javaeditor.EditorUtility;
 import org.eclipse.jdt.internal.ui.javaeditor.JavaEditor;
@@ -47,18 +49,22 @@ public static void saca() throws JavaModelException {
  */
 private static void revisaContenido(List<MethodDeclaration> methods) {
 	for(MethodDeclaration metodo:methods) {
-		descomponedor(metodo.getBody().statements());
+		StatementLabel lista = new StatementLabel(null);
+		descomponedor(metodo.getBody().statements(),lista.listaStatements);
 	}
 	
 }
 /**
  * Agarra una lista de statements, pero no hace nada si recibe algo vacio
  * @param statements
+ * @param listaStatements 
  */
-private static void descomponedor(List statements) {
+private static void descomponedor(List statements, ArrayList<StatementLabel> listaStatements) {
 	if(!statements.isEmpty()) {
 		int indice = 0;
 	while(indice<statements.size()) {
+		StatementLabel estado =new StatementLabel((Statement) statements.get(indice));
+		listaStatements.add(estado);
 		System.out.println("__________________________________________________________________________________");
 		System.out.println(statements.get(indice).getClass());
 		System.out.println(statements.get(indice));
@@ -66,36 +72,37 @@ private static void descomponedor(List statements) {
 
 		try {
 			
-			descomponedorAux(statements.get(indice));
+			descomponedorAux(statements.get(indice),estado.listaStatements);
 			
 		}catch(Exception e) {
-			System.out.println("error");
+			System.out.println("No body");
 		}
 		indice++;
 	}
 	
 	}
 	else {
-		System.out.println("error");
+		System.out.println("No body");
 	}
 	
 }
 /**
  * Este es el caso de que el Statement tiene hijos
  * @param object
+ * @param listaStatements 
  */
-private static void descomponedorAux(Object object) {
+private static void descomponedorAux(Object object, ArrayList<StatementLabel> listaStatements) {
 	if(object instanceof IfStatement ) {
-		descomponedor(((Block) ((IfStatement) object).getThenStatement()).statements());}
+		descomponedor(((Block) ((IfStatement) object).getThenStatement()).statements(),listaStatements);}
 	if(object instanceof WhileStatement) {
-		descomponedor(((Block) ((WhileStatement) object).getBody()).statements());
+		descomponedor(((Block) ((WhileStatement) object).getBody()).statements(),listaStatements);
 	}
 	if(object instanceof ForStatement) {
-		descomponedor(((Block) ((ForStatement) object).getBody()).statements());
+		descomponedor(((Block) ((ForStatement) object).getBody()).statements(),listaStatements);
 		
 	}
 	if(object instanceof EnhancedForStatement) {
-		descomponedor(((Block) ((EnhancedForStatement) object).getBody()).statements());
+		descomponedor(((Block) ((EnhancedForStatement) object).getBody()).statements(),listaStatements);
 	}
 	if(object instanceof ExpressionStatement) {
 		System.out.println("LA expresione s de tipo");

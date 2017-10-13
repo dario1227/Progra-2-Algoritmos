@@ -11,6 +11,7 @@ public class StatementLabel {
 	public StatementLabel(Statement estado) {
 		this.statement = estado;
 		this.labelactual = null;
+		this.listaStatements = new ArrayList<>();
 	}
 	/**
 	 * Es el metodo principal que va a entrar en el statementLabel de busqueda
@@ -58,4 +59,5 @@ public class StatementLabel {
 	private static void cambiaLabel(StatementLabel state) {
 		//Aqui meta las varas de como cambiar el color a un label o asi, ya que esto lo que puede optener es el label
 	}
+	
 }
