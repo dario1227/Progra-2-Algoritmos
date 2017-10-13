@@ -12,10 +12,16 @@ import org.eclipse.ui.part.ViewPart;
 
 import admin.arboles.LeeGrafosAST;
 
+/*
+ * depende de una de las extensiones del plugin, y esta clase lo "complementa"
+ */
 public class EView extends ViewPart {
 	public EView() {
 	}
-
+/*
+ *
+ * Contenido del view
+ */
 	@Override
 	public void createPartControl(Composite parent) {
 		Canvas canvas = new Canvas(parent,SWT.NONE);

@@ -1,6 +1,10 @@
 package diagramaflojo;
 
-
+/*
+ * Metodo al darle click a ejecutar
+ * (en las extensiones del plugin, hay varios, son como las clases del GUI 
+ * que se mostrara en eclipse, como el toolbar o el view)
+ */
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;

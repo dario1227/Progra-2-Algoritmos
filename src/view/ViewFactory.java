@@ -12,6 +12,14 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import view.Comandos;
 public class ViewFactory {
+	/*
+	 * clas siempre es el mismo
+	 * comando es el tipo del enum creado
+	 * el canvas será el mismo siempre
+	 * el name, es el texto del label
+	 * y x y Y con las posiciones respectivas
+	 * me retorna un label configurado, ya con posicion, texto, menu e imagen correspondiente
+	 */
 	public static Label getGrafic(Class<? extends EView> clas,Comandos type,Canvas parent,String name,int x, int y) {
 		Display display = Display.getCurrent();
 		Label result=new Label(parent, SWT.CENTER);
