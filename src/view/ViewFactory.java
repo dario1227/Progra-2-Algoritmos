@@ -10,6 +10,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+
+import com.sun.javafx.scene.web.Debugger;
+
 import view.Comandos;
 public class ViewFactory {
 	/*
@@ -22,46 +25,52 @@ public class ViewFactory {
 	 */
 	public static Label getGrafic(Class<? extends EView> clas,Comandos type,Canvas parent,String name,int x, int y) {
 		Display display = Display.getCurrent();
-		Label result=new Label(parent, SWT.CENTER);
-		result.setText("\n"+"\n"+name);
-		result.setBounds(x,y,150,80);
-		Menu menu=new Menu(result);
+		Labels result=new Labels(parent, SWT.CENTER,null, type);
+		if(type==Comandos.For) {
+			result.image=new Image(display, clas.getResourceAsStream("For.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("ForB.png"));
+		}
+		else if(type==Comandos.Accion) {
+			result.image=new Image(display, clas.getResourceAsStream("Imagen accion.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("Imagen accionB.png"));
+			
+		}
+		else if(type==Comandos.While) {
+			result.image=new Image(display, clas.getResourceAsStream("While.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("WhileB.png"));
+
+		}
+		else if(type==Comandos.If) {
+			result.image=new Image(display, clas.getResourceAsStream("CondicionIf.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("CondicionIfB.png"));
+		}
+		result.label.setText("\n"+"\n"+name);
+		result.label.setBounds(x,y,150,80);
+		Menu menu=new Menu(result.label);
 		MenuItem step=new MenuItem(menu, SWT.PUSH);
 		step.setText("Step In");
-		Image imagen=null;
-		
 		 step.addListener(SWT.Selection, new Listener()
 		    {
 		        @Override
 		        public void handleEvent(Event event)
 		        {
-		        	Control[] hijos=parent.getChildren();
-		        	int size=hijos.length;
-		        	for(int i=0;i<size;i++) {
-		        		hijos[i].dispose();
-		        	}
+		        	debuggerImage(result);
 		        }
+		        
 		    });
-		if(type==Comandos.For) {
-			imagen=new Image(display, clas.getResourceAsStream("For.png"));
-		}
-		else if(type==Comandos.Accion) {
-			imagen=new Image(display, clas.getResourceAsStream("Imagen accion.png"));
-		}
-		else if(type==Comandos.While) {
-			imagen=new Image(display, clas.getResourceAsStream("While.png"));
-		}
-		else if(type==Comandos.If) {
-			imagen=new Image(display, clas.getResourceAsStream("CondicionIf.png"));
-		}
-		result.setBackgroundImage(imagen);
-		result.setMenu(menu);
-		return result;
+		result.label.setBackgroundImage(result.image);
+		result.label.setMenu(menu);
+		return result.label;
 		
 	}
-	public void debuggerImage(Label label,Class<? extends EView> clas) {
-		Display display = Display.getCurrent();
-		Image imagen=label.getBackgroundImage();
-		Image debugger=new Image(display, clas.getResourceAsStream("While.png"));
-	}
+	public static void debuggerImage(Labels result) {
+		Image imagenActual=result.label.getBackgroundImage();
+		if(imagenActual==result.image) {
+			result.label.setBackgroundImage(result.imageB);
+		}
+		else{
+			result.label.setBackgroundImage(result.image);
+		}
+		
+		}
 }
