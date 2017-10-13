@@ -1,5 +1,6 @@
 package admin.arboles;
 import java.util.List;
+
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.dom.AST;
@@ -17,9 +18,12 @@ import org.eclipse.jdt.internal.ui.javaeditor.JavaEditor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-@SuppressWarnings({ "unused", "restriction" })
+@SuppressWarnings({ "restriction" })
 public class LeeGrafosAST {
-
+/**
+ * Esta clase lo que saca es el compilation Unit y los metodos de la clase actual en el workbench
+ * @throws JavaModelException
+ */
 public static void saca() throws JavaModelException {
 	try {
 	IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
@@ -37,12 +41,20 @@ public static void saca() throws JavaModelException {
 	}
 	catch(Exception e) {}
 }
+/**
+ * Llama funcion que descompone los metodos
+ * @param methods
+ */
 private static void revisaContenido(List<MethodDeclaration> methods) {
 	for(MethodDeclaration metodo:methods) {
 		descomponedor(metodo.getBody().statements());
 	}
 	
 }
+/**
+ * Agarra una lista de statements, pero no hace nada si recibe algo vacio
+ * @param statements
+ */
 private static void descomponedor(List statements) {
 	if(!statements.isEmpty()) {
 		int indice = 0;
@@ -68,6 +80,10 @@ private static void descomponedor(List statements) {
 	}
 	
 }
+/**
+ * Este es el caso de que el Statement tiene hijos
+ * @param object
+ */
 private static void descomponedorAux(Object object) {
 	if(object instanceof IfStatement ) {
 		descomponedor(((Block) ((IfStatement) object).getThenStatement()).statements());}
@@ -88,7 +104,11 @@ System.out.println(((ExpressionStatement) object).getExpression());
 
 	}
 }
-
+/**
+ * Me da el compilation Unit
+ * @param unit
+ * @return
+ */
 private static CompilationUnit parse(ICompilationUnit unit) {
     ASTParser parser = ASTParser.newParser(AST.JLS3);
     parser.setKind(ASTParser.K_COMPILATION_UNIT);
