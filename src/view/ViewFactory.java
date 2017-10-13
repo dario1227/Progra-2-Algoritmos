@@ -59,5 +59,9 @@ public class ViewFactory {
 		return result;
 		
 	}
-
+	public void debuggerImage(Label label,Class<? extends EView> clas) {
+		Display display = Display.getCurrent();
+		Image imagen=label.getBackgroundImage();
+		Image debugger=new Image(display, clas.getResourceAsStream("While.png"));
+	}
 }

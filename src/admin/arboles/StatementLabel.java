@@ -8,9 +8,9 @@ public class StatementLabel {
 	Label labelactual;
 	Statement statement;
 	ArrayList<StatementLabel> listaStatements;
-	public void StatementLabel(Statement estado) {
+	public StatementLabel(Statement estado) {
 		this.statement = estado;
-		this.labelactual = 
+		this.labelactual = null;
 	}
 	/**
 	 * Es el metodo principal que va a entrar en el statementLabel de busqueda
