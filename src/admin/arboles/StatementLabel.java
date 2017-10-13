@@ -8,6 +8,10 @@ public class StatementLabel {
 	Label labelactual;
 	Statement statement;
 	ArrayList<StatementLabel> listaStatements;
+	public void StatementLabel(Statement estado) {
+		this.statement = estado;
+		this.labelactual = 
+	}
 	/**
 	 * Es el metodo principal que va a entrar en el statementLabel de busqueda
 	 * @param statement es el statement que se supone va a dar el debugger

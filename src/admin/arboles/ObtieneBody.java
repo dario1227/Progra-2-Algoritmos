@@ -21,6 +21,7 @@ public static Block optieneExterno(MethodInvocation node) {
 	if ( unit == null ) {
 	   // not available, external declaration
 	}
+	@SuppressWarnings("deprecation")
 	ASTParser parser = ASTParser.newParser( AST.JLS8 );
 	parser.setKind( ASTParser.K_COMPILATION_UNIT );
 	parser.setSource( unit );
