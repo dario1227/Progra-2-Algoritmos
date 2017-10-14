@@ -31,7 +31,8 @@ public class ViewFactory {
 	 */
 	public static Label getGrafic(Class<? extends EView> clas,Comandos type,Canvas parent,String name,int x, int y) {
 		Display display = Display.getCurrent();
-		Labels result=new Labels(parent, SWT.CENTER,null, type);
+		Labels result=new Labels(parent,null, type);
+		result.parent=parent;
 		if(type==Comandos.For) {
 			result.image=new Image(display, clas.getResourceAsStream("For.png"));
 			result.imageB=new Image(display, clas.getResourceAsStream("ForB.png"));
