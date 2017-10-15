@@ -38,10 +38,10 @@ public class EView extends ViewPart {
 		    });
 		 canvas.setMenu(menu);
 		Class<? extends EView> clas = getClass();
-		ViewFactory.getGrafic(clas, Comandos.For,canvas, "helor nigga", 100, 100);
-		ViewFactory.getGrafic(clas, Comandos.While,canvas, "helor nigga", 350, 100);
-		ViewFactory.getGrafic(clas, Comandos.If,canvas, "helor nigga", 650, 100);
-		ViewFactory.getGrafic(clas, Comandos.Accion,canvas, "helor nigga", 500, 100);
+		ViewFactory.getGrafic(clas, Comandos.For,canvas, "helor nigga");
+		ViewFactory.getGrafic(clas, Comandos.While,canvas, "helor nigga");
+		ViewFactory.getGrafic(clas, Comandos.If,canvas, "helor nigga");
+		ViewFactory.getGrafic(clas, Comandos.Accion,canvas, "helor nigga");
 
 	}
 

@@ -29,7 +29,7 @@ public class ViewFactory {
 	 * y x y Y con las posiciones respectivas
 	 * me retorna un label configurado, ya con posicion, texto, menu e imagen correspondiente
 	 */
-	public static Label getGrafic(Class<? extends EView> clas,Comandos type,Canvas parent,String name,int x, int y) {
+	public static Label getGrafic(Class<? extends EView> clas,Comandos type,Canvas parent,String name) {
 		Display display = Display.getCurrent();
 		Labels result=new Labels(parent,null, type);
 		result.parent=parent;
@@ -52,7 +52,6 @@ public class ViewFactory {
 			result.imageB=new Image(display, clas.getResourceAsStream("CondicionIfB.png"));
 		}
 		result.label.setText("\n"+"\n"+name);
-		result.label.setBounds(x,y,150,80);
 		Menu menu=new Menu(result.label);
 		MenuItem step=new MenuItem(menu, SWT.PUSH);
 		step.setText("Step In");

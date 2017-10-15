@@ -58,4 +58,10 @@ public class Labels {
 		}
 		
 	}
+	public void setPos(int x, int y) {
+		this.label.setBounds(x, y, 150, 80);
+	}
+	public static void setPos(Label label, int x, int y) {
+		label.setBounds(x, y,150, 80);
+	}
 }
