@@ -1,11 +1,30 @@
 package admin.arboles;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Canvas;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 
 import java.util.ArrayList;
-
+import org.eclipse.swt.SWT;
 import org.eclipse.jdt.core.dom.Statement;
+import org.eclipse.jdt.core.dom.Block;
+
+import org.eclipse.jdt.core.dom.EnhancedForStatement;
+import org.eclipse.jdt.core.dom.ExpressionStatement;
+import org.eclipse.jdt.core.dom.ForStatement;
+import org.eclipse.jdt.core.dom.IfStatement;
+import org.eclipse.jdt.core.dom.WhileStatement;
+import com.sun.javafx.scene.web.Debugger;
+
+import view.Labels;
 public class StatementLabel {
-	Label labelactual;
+	Labels labelactual;
 	Statement statement;
 	ArrayList<StatementLabel> listaStatements;
 	public StatementLabel(Statement estado) {
