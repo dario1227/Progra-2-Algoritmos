@@ -18,8 +18,8 @@ public class Ejecutar extends AbstractHandler{
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
-			LeeGrafosAST.saca();
 			HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView("DiagramaFlojo.view1");
+			LeeGrafosAST.saca();
 		} catch (PartInitException e1) {
 			e1.printStackTrace();
 		} catch (JavaModelException e) {

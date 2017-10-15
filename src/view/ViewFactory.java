@@ -29,7 +29,7 @@ public class ViewFactory {
 	 * y x y Y con las posiciones respectivas
 	 * me retorna un label configurado, ya con posicion, texto, menu e imagen correspondiente
 	 */
-	public static Label getGrafic(Class<? extends EView> clas,Comandos type,Canvas parent,String name) {
+	public static Labels getGrafic(Class<? extends EView> clas,Comandos type,Canvas parent,String name) {
 		Display display = Display.getCurrent();
 		Labels result=new Labels(parent,null, type);
 		result.parent=parent;
@@ -66,7 +66,7 @@ public class ViewFactory {
 		    });
 		result.label.setBackgroundImage(result.image);
 		result.label.setMenu(menu);
-		return result.label;
+		return result;
 		
 	}
 

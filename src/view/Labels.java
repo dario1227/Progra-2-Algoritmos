@@ -48,13 +48,16 @@ public class Labels {
 		if(object instanceof ExpressionStatement) {
 			comando=Comandos.Accion;
 		}
+		else {
+			comando = Comandos.Accion;
+		}
 		return comando;
 	}
 	public static void stepIn(Labels clean) {
 		Canvas toClean=clean.parent;
 		Control[] hijos=toClean.getChildren();
 		for(int i=0;i<hijos.length;i++) {
-			hijos[i].dispose();
+			hijos[i].setVisible(false);
 		}
 		
 	}

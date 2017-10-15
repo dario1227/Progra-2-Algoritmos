@@ -22,12 +22,14 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 @SuppressWarnings({ "restriction" })
 public class LeeGrafosAST {
+	public static List<StatementLabel> actuales = new ArrayList<StatementLabel>();
 /**
  * Esta clase lo que saca es el compilation Unit y los metodos de la clase actual en el workbench
  * @throws JavaModelException
  */
 public static void saca() throws JavaModelException {
 	try {
+	actuales = new ArrayList<StatementLabel>();
 	IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 	IEditorPart activeEditor = page.getActiveEditor();
 	ICompilationUnit root=null;
@@ -48,8 +50,11 @@ public static void saca() throws JavaModelException {
  * @param methods
  */
 private static void revisaContenido(List<MethodDeclaration> methods) {
+	StatementLabel origen = new StatementLabel(null);
+	actuales.add(origen);
 	for(MethodDeclaration metodo:methods) {
 		StatementLabel lista = new StatementLabel(null);
+		origen.listaStatements.add(lista);
 		descomponedor(metodo.getBody().statements(),lista.listaStatements);
 	}
 	
@@ -62,6 +67,7 @@ private static void revisaContenido(List<MethodDeclaration> methods) {
 private static void descomponedor(List statements, ArrayList<StatementLabel> listaStatements) {
 	if(!statements.isEmpty()) {
 		int indice = 0;
+
 	while(indice<statements.size()) {
 		StatementLabel estado =new StatementLabel((Statement) statements.get(indice));
 		listaStatements.add(estado);
@@ -103,12 +109,6 @@ private static void descomponedorAux(Object object, ArrayList<StatementLabel> li
 	}
 	if(object instanceof EnhancedForStatement) {
 		descomponedor(((Block) ((EnhancedForStatement) object).getBody()).statements(),listaStatements);
-	}
-	if(object instanceof ExpressionStatement) {
-		System.out.println("LA expresione s de tipo");
-System.out.println(((ExpressionStatement) object).getExpression());
-//(ExpressionStatement) object).getExpression() da un methodInvocation
-
 	}
 }
 /**
