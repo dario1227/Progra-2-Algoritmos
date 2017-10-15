@@ -7,16 +7,20 @@ import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 
 public class Labels {
 	Image image=null;
 	Image imageB=null;
 	Label label=null;
-	public Labels(Composite parent, int style,Image imagen,Comandos comando) {
+	Canvas parent=null;
+	public Labels(Composite parent,Image imagen,Comandos comando) {
 		this.label=new Label(parent, SWT.CENTER);
 		this.image=imagen;
+		this.parent=null;
 	}
 	public static void debuggerImage(Labels result) {
 		Image imagenActual=result.label.getBackgroundImage();
@@ -45,5 +49,13 @@ public class Labels {
 			comando=Comandos.Accion;
 		}
 		return comando;
+	}
+	public static void stepIn(Labels clean) {
+		Canvas toClean=clean.parent;
+		Control[] hijos=toClean.getChildren();
+		for(int i=0;i<hijos.length;i++) {
+			hijos[i].dispose();
+		}
+		
 	}
 }
