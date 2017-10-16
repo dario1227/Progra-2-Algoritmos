@@ -7,8 +7,10 @@ import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Canvas;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
@@ -32,26 +34,6 @@ public class ViewFactory {
 	public static Labels getGrafic(Class<? extends EView> clas,Comandos type,Canvas parent,String name) {
 		Display display = Display.getCurrent();
 		Labels result=new Labels(parent,null, type);
-		result.parent=parent;
-		if(type==Comandos.For) {
-			result.image=new Image(display, clas.getResourceAsStream("For.png"));
-			result.imageB=new Image(display, clas.getResourceAsStream("ForB.png"));
-		}
-		else if(type==Comandos.Accion) {
-			result.image=new Image(display, clas.getResourceAsStream("Imagen accion.png"));
-			result.imageB=new Image(display, clas.getResourceAsStream("Imagen accionB.png"));
-			
-		}
-		else if(type==Comandos.While) {
-			result.image=new Image(display, clas.getResourceAsStream("While.png"));
-			result.imageB=new Image(display, clas.getResourceAsStream("WhileB.png"));
-
-		}
-		else if(type==Comandos.If) {
-			result.image=new Image(display, clas.getResourceAsStream("CondicionIf.png"));
-			result.imageB=new Image(display, clas.getResourceAsStream("CondicionIfB.png"));
-		}
-		result.label.setText("\n"+name);
 		Menu menu=new Menu(result.label);
 		MenuItem step=new MenuItem(menu, SWT.PUSH);
 		step.setText("Step In");
@@ -64,8 +46,28 @@ public class ViewFactory {
 		        }
 		        
 		    });
+		result.parent=parent;
+		if(type==Comandos.For) {
+			result.image=new Image(display, clas.getResourceAsStream("For.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("ForB.png"));
+		}
+		else if(type==Comandos.Accion) {
+			result.image=new Image(display, clas.getResourceAsStream("Imagen accion.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("Imagen accionB.png"));
+			result.label.setMenu(menu);
+		}
+		else if(type==Comandos.While) {
+			result.image=new Image(display, clas.getResourceAsStream("While.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("WhileB.png"));
+
+		}
+		else if(type==Comandos.If) {
+			result.image=new Image(display, clas.getResourceAsStream("CondicionIf.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("CondicionIfB.png"));
+		}
+		result.label.setText("\n"+name);
 		result.label.setBackgroundImage(result.image);
-		result.label.setMenu(menu);
+		
 		return result;
 		
 	}

@@ -14,6 +14,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import admin.arboles.LeeGrafosAST;
 import admin.arboles.StatementLabel;
+import view.EView;
 import view.Labels;
 public class Ejecutar extends AbstractHandler{
 
@@ -24,6 +25,7 @@ public class Ejecutar extends AbstractHandler{
 			StatementLabel.x = 0;
 			Labels.dispose();
 			LeeGrafosAST.saca();
+			EView.scroll.setMinSize(StatementLabel.x,0);
 		} catch (PartInitException e1) {
 			e1.printStackTrace();
 		} catch (JavaModelException e) {

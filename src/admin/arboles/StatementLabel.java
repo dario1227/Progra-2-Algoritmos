@@ -20,7 +20,7 @@ public class StatementLabel {
 	else {		this.statement = estado;
 	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, estado.toString());
 	this.labelsactual.setPos(x, y);
-	x+=100;
+	x+=200;
 	this.listaStatements = new ArrayList<>();}
 	
 	}
