@@ -28,7 +28,7 @@ public class StatementLabel {
 	
 	else {		this.statement = estado;
 
-	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, estado.toString());
+	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, expresion(estado));
 	this.listaStatements = new ArrayList<>();}
 		
 //	this.labelsactual.setPos(x, y);
