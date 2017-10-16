@@ -12,6 +12,7 @@ import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import admin.arboles.ColocaImagenes;
 import admin.arboles.LeeGrafosAST;
 import admin.arboles.StatementLabel;
 import view.Labels;
@@ -21,9 +22,10 @@ public class Ejecutar extends AbstractHandler{
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
 			HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView("DiagramaFlojo.view1");
-			StatementLabel.x = 0;
+		
 			Labels.dispose();
 			LeeGrafosAST.saca();
+			ColocaImagenes.colocarPrincipal();
 		} catch (PartInitException e1) {
 			e1.printStackTrace();
 		} catch (JavaModelException e) {

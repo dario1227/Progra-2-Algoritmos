@@ -1,6 +1,15 @@
 package admin.arboles;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.jdt.core.dom.Block;
+import org.eclipse.jdt.core.dom.EnhancedForStatement;
+import org.eclipse.jdt.core.dom.Expression;
+import org.eclipse.jdt.core.dom.ForStatement;
+import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.Statement;
+import org.eclipse.jdt.core.dom.WhileStatement;
+
 import view.Comandos;
 import view.EView;
 import view.Labels;
@@ -18,9 +27,9 @@ public class StatementLabel {
 		this.listaStatements = new ArrayList<>();}
 	
 	else {		this.statement = estado;
-	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, estado.toString());
-	this.labelsactual.setPos(x, y);
-	x+=100;
+	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, expresion(estado));
+//	this.labelsactual.setPos(x, y);
+//	x+=100;  .getExpression()
 	this.listaStatements = new ArrayList<>();}
 	
 	}
@@ -70,5 +79,46 @@ public class StatementLabel {
 	private static void cambiaLabel(StatementLabel state) {
 		//Aqui meta las varas de como cambiar el color a un label o asi, ya que esto lo que puede optener es el label
 	}
-	
+	private static  String expresion(Statement estado) {
+		if(estado instanceof IfStatement ) {
+			return "if  "+ ((IfStatement) estado).getExpression().toString();}
+		else if(estado instanceof WhileStatement) {
+			return "while  " +((WhileStatement) estado).getExpression().toString();
+		}
+		else if(estado instanceof ForStatement) {
+			return "For  "+ ((ForStatement) estado).getExpression().toString();
+			
+		}
+		else if(estado instanceof EnhancedForStatement) {
+			return "For  " + ((EnhancedForStatement) estado).getExpression().toString();
+		}
+		else  {
+			return estado.toString();
+		}
+	}
+	public  int getProfundidad() {
+		return getprofundidadAux(this.listaStatements,0);
+	}
+	private int getprofundidadAux(ArrayList<StatementLabel> listaStatements2, int x) {
+		if(listaStatements2.isEmpty()) {
+			return x;
+		}
+		 x++;
+		int prof = 0;
+		List<Integer> lista = new ArrayList<>();
+		for(StatementLabel labelA :listaStatements2 ) {
+			int y = getprofundidadAux(labelA.listaStatements,x);
+			lista.add(y);
+		}
+		return SacaMax(lista);
+	}
+	private int SacaMax(List<Integer> lista) {
+		int x = 0;
+		for(int i:lista) {
+			if(i>x) {
+				x=i;
+			}
+		}
+		return x;
+	}
 }
