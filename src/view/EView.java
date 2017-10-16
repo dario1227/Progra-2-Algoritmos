@@ -46,10 +46,10 @@ public class EView extends ViewPart {
 		 canvas.setMenu(menu);
 		//Class<? extends EView> clas = getClass();
 		 clas = getClass();
-		ViewFactory.getGrafic(clas, Comandos.For,canvas, "helor nigga");
-		ViewFactory.getGrafic(clas, Comandos.While,canvas, "helor nigga");
-		ViewFactory.getGrafic(clas, Comandos.If,canvas, "helor nigga");
-		ViewFactory.getGrafic(clas, Comandos.Accion,canvas, "helor nigga");
+//		ViewFactory.getGrafic(clas, Comandos.For,canvas, "helor nigga");
+//		ViewFactory.getGrafic(clas, Comandos.While,canvas, "helor nigga");
+//		ViewFactory.getGrafic(clas, Comandos.If,canvas, "helor nigga");
+//		ViewFactory.getGrafic(clas, Comandos.Accion,canvas, "helor nigga");
 
 	}
 

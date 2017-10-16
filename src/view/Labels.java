@@ -37,29 +37,38 @@ public class Labels {
 		Comandos comando=null;
 		if(object instanceof IfStatement ) {
 			comando=Comandos.If;
+			return comando;
 		}
-		if(object instanceof WhileStatement) {
+		else if(object instanceof WhileStatement) {
 			comando=Comandos.While;
+			return comando;
 
 		}
-		if(object instanceof ForStatement || object instanceof EnhancedForStatement) {
+		else if(object instanceof ForStatement || object instanceof EnhancedForStatement) {
 			comando=Comandos.For;
+			return comando;
 		}
-		if(object instanceof ExpressionStatement) {
+		else if(object instanceof ExpressionStatement) {
 			comando=Comandos.Accion;
+			return comando;
 		}
 		else {
 			comando = Comandos.Accion;
 		}
 		return comando;
 	}
-	public static void stepIn(Labels clean) {
-		Canvas toClean=clean.parent;
-		Control[] hijos=toClean.getChildren();
+	public static void clear() {
+		Canvas varuable = EView.canvas;
+		Control[] hijos=varuable.getChildren();
 		for(int i=0;i<hijos.length;i++) {
 			hijos[i].setVisible(false);
+		}}
+	public static void dispose() {
+			Canvas varuable = EView.canvas;
+			Control[] hijos=varuable.getChildren();
+			for(int i=0;i<hijos.length;i++) {
+				hijos[i].dispose();
 		}
-		
 	}
 	public void setPos(int x, int y) {
 		this.label.setBounds(x, y, 150, 80);

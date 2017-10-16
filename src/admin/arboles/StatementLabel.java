@@ -6,17 +6,21 @@ import view.EView;
 import view.Labels;
 import view.ViewFactory;
 public class StatementLabel {
-	Labels labelactual;
+	public static int x = 0;
+	static int y = 0;
+	Labels labelsactual;
 	Statement statement;
 	ArrayList<StatementLabel> listaStatements;
 	public StatementLabel(Statement estado) {
 		if (estado == null) {
 		this.statement = estado;
-		this.labelactual = null;
+		this.labelsactual = null;
 		this.listaStatements = new ArrayList<>();}
 	
 	else {		this.statement = estado;
-	this.labelactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, estado.toString());;
+	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, estado.toString());
+	this.labelsactual.setPos(x, y);
+	x+=100;
 	this.listaStatements = new ArrayList<>();}
 	
 	}
