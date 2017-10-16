@@ -14,7 +14,7 @@ private static void colocarPrincipaAux(StatementLabel actual) {
 	for(StatementLabel metodo:actual.listaStatements) {
 		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 		System.out.println(metodo.getProfundidad());
-		x+=metodo.getProfundidad()*100-100;
+		x+=metodo.getProfundidad()*100;
 		colocarMetodo(x,metodo.listaStatements,y);
 		x+=x+=metodo.getProfundidad()*100;
 	}

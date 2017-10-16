@@ -23,7 +23,6 @@ public class Ejecutar extends AbstractHandler{
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
 			HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView("DiagramaFlojo.view1");
-		
 			Labels.dispose();
 			LeeGrafosAST.saca();
 			EView.scroll.setMinSize(StatementLabel.x,0);
