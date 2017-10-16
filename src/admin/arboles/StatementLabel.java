@@ -27,11 +27,12 @@ public class StatementLabel {
 		this.listaStatements = new ArrayList<>();}
 	
 	else {		this.statement = estado;
-	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, expresion(estado));
+
+	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, estado.toString());
+	this.listaStatements = new ArrayList<>();}
+		
 //	this.labelsactual.setPos(x, y);
 //	x+=100;  .getExpression()
-	this.listaStatements = new ArrayList<>();}
-	
 	}
 	/**
 	 * Es el metodo principal que va a entrar en el statementLabel de busqueda

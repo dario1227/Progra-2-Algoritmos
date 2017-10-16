@@ -2,6 +2,8 @@ package view;
 
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
@@ -19,7 +21,9 @@ public class EView extends ViewPart {
 	public static Composite actual;
 	public static Class<? extends EView> clas;
 	public static Canvas canvas;
+	public static ScrolledComposite scroll;
 	public EView() {
+
 	}
 	
 /*
@@ -28,10 +32,11 @@ public class EView extends ViewPart {
  */
 	@Override
 	public void createPartControl(Composite parent) {
+		scroll= new ScrolledComposite(parent,SWT.H_SCROLL | SWT.V_SCROLL);
 		actual = parent;
 		System.out.println("MAE ME ESTOY EJECUTANDO :DDDDDDDDDDDDDD");
 		//Canvas canvas = new Canvas(parent,SWT.NONE);
-		canvas = new Canvas(parent,SWT.NONE);
+		canvas = new Canvas(scroll,SWT.NONE);
 		Menu menu= new Menu(canvas);
 		MenuItem back=new MenuItem(menu, SWT.PUSH);
 		back.setText("Go Back");
@@ -44,8 +49,11 @@ public class EView extends ViewPart {
 		        }
 		    });
 		 canvas.setMenu(menu);
-		//Class<? extends EView> clas = getClass();
+		 scroll.setContent(canvas);
+//		//Class<? extends EView> clas = getClass();
 		 clas = getClass();
+		 scroll.setExpandHorizontal(true);
+		 scroll.setExpandVertical(true);
 //		ViewFactory.getGrafic(clas, Comandos.For,canvas, "helor nigga");
 //		ViewFactory.getGrafic(clas, Comandos.While,canvas, "helor nigga");
 //		ViewFactory.getGrafic(clas, Comandos.If,canvas, "helor nigga");
