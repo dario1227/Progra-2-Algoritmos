@@ -25,7 +25,7 @@ public class Ejecutar extends AbstractHandler{
 			HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView("DiagramaFlojo.view1");
 			Labels.dispose();
 			LeeGrafosAST.saca();
-			EView.scroll.setMinSize(StatementLabel.x,0);
+			
 			ColocaImagenes.colocarPrincipal();
 		} catch (PartInitException e1) {
 			e1.printStackTrace();

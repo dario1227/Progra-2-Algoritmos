@@ -2,6 +2,8 @@ package admin.arboles;
 
 import java.util.ArrayList;
 
+import view.EView;
+
 public class ColocaImagenes {
 public static void colocarPrincipal() {
 	StatementLabel actual =LeeGrafosAST.actuales.get(0);
@@ -14,11 +16,10 @@ private static void colocarPrincipaAux(StatementLabel actual) {
 	for(StatementLabel metodo:actual.listaStatements) {
 		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 		System.out.println(metodo.getProfundidad());
-		x+=metodo.getProfundidad()*100;
+		x+=metodo.getProfundidad()*200;
 		colocarMetodo(x,metodo.listaStatements,y);
-		x+=x+=metodo.getProfundidad()*100;
 	}
-	
+	EView.scroll.setMinSize(x+200,2000);
 }
 
 private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements, int y) {
