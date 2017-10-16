@@ -52,6 +52,14 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+6">
       </key>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.sourceLocators">
+      <sourceLocator
+            class="diagramaflojo.TextLocator"
+            id="DiagramaFlujo.sourceLocator1"
+            name="Locator">
+      </sourceLocator>
    </extension> 
 
 </plugin>

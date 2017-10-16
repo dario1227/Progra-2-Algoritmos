@@ -9,7 +9,6 @@ import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.EnhancedForStatement;
-import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
@@ -64,7 +63,7 @@ private static void revisaContenido(List<MethodDeclaration> methods) {
  * @param statements
  * @param listaStatements 
  */
-private static void descomponedor(List statements, ArrayList<StatementLabel> listaStatements) {
+private static void descomponedor(List<?> statements, ArrayList<StatementLabel> listaStatements) {
 	if(!statements.isEmpty()) {
 		int indice = 0;
 
@@ -117,7 +116,8 @@ private static void descomponedorAux(Object object, ArrayList<StatementLabel> li
  * @return
  */
 private static CompilationUnit parse(ICompilationUnit unit) {
-    ASTParser parser = ASTParser.newParser(AST.JLS3);
+    @SuppressWarnings("deprecation")
+	ASTParser parser = ASTParser.newParser(AST.JLS3);
     parser.setKind(ASTParser.K_COMPILATION_UNIT);
     parser.setSource(unit);
     parser.setResolveBindings(true);

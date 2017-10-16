@@ -12,6 +12,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 public class Parser {
+	@SuppressWarnings("restriction")
 	public static void saca() throws JavaModelException {
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		IEditorPart activeEditor = page.getActiveEditor();
@@ -25,7 +26,8 @@ public class Parser {
 		MethodVisitor visitante = new MethodVisitor();
 		compilado.accept(visitante);}
 	private static CompilationUnit parse(ICompilationUnit unit) {
-	    ASTParser parser = ASTParser.newParser(AST.JLS3);
+	    @SuppressWarnings("deprecation")
+		ASTParser parser = ASTParser.newParser(AST.JLS3);
 	    parser.setKind(ASTParser.K_COMPILATION_UNIT);
 	    parser.setSource(unit);
 	    parser.setResolveBindings(true);

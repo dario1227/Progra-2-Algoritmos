@@ -17,7 +17,7 @@ private static void colocarPrincipaAux(StatementLabel actual) {
 		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 		System.out.println(metodo.getProfundidad());
 		x+=metodo.getProfundidad()*200;
-		colocarMetodo(x,metodo.listaStatements,y);
+		colocarMetodo(x-130,metodo.listaStatements,y);
 		x+=50;
 	}
 	EView.scroll.setMinSize(x+200,2000);
