@@ -26,11 +26,10 @@ public static Label crearLabel(String lugar,int x, int y,int largo, int alto) {
 
 private static Label crearBottonLabel(int x, int y, int largo, int alto) {
 	//parent
-	Display display = Display.getCurrent();
-	Color blue = display.getSystemColor(SWT.COLOR_BLUE);
 	System.out.println("SI ENTRE AQUI FFFFFFFFFFFFFFFFFAKFNQOOOOOOOOOOOOOOOOOOOOOOO");
 	Label label = new Label(EView.canvas, SWT.CENTER);
 	label.setBounds(x, y, largo, alto);
+	label.setText("HHHHOOLAasasasasasas");
 	return label;
 }
 

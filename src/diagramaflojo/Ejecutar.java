@@ -14,7 +14,9 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import admin.arboles.ColocaImagenes;
 import admin.arboles.LeeGrafosAST;
+import javafx.scene.shape.Line;
 import view.Labels;
+import view.LineFactory;
 public class Ejecutar extends AbstractHandler{
 
 	@Override

@@ -33,7 +33,7 @@ private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatement
 		
 		label.labelsactual.setPos(x, y);
 		if(label.listaStatements.isEmpty()) {
-			label.lineas.add(LineFactory.crearLabel("botton", x+75, y, 100, 8500));
+			label.lineas.add(LineFactory.crearLabel("botton", x+75, y, 150, 850));
 			y+=150;
 		}
 		else {
