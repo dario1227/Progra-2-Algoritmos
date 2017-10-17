@@ -1,9 +1,16 @@
 package view;
 
+import javax.swing.text.View;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
@@ -34,13 +41,27 @@ public class EView extends ViewPart {
 		canvas = new Canvas(scroll,SWT.NONE);
 		Menu menu= new Menu(canvas);
 		MenuItem back=new MenuItem(menu, SWT.PUSH);
-		back.setText("Go Back");
+		back.setText("Save");
 		 back.addListener(SWT.Selection, new Listener()
 		    {
 		        @Override
 		        public void handleEvent(Event event)
 		        {
-		        System.out.println("back");
+		        	int x=0;
+		    		int y=0;
+		        	GC gc = new GC(scroll);
+                    Image image = new Image(ViewFactory.displayR,scroll.getHorizontalBar().getMaximum(),scroll.getVerticalBar().getMaximum());
+                    while(x<scroll.getHorizontalBar().getMaximum() && y<scroll.getVerticalBar().getMaximum()) {
+                    	gc.copyArea(image, x, 0);
+                    	System.out.println("222");
+                    	x+=400;
+                    	y+=400;
+                    }
+                    ImageLoader loader = new ImageLoader();
+                    loader.data = new ImageData[]{image.getImageData()};
+                    loader.save("c:/temp/out.png", SWT.IMAGE_PNG);
+                    gc.dispose();
+                
 		        }
 		    });
 		 canvas.setMenu(menu);

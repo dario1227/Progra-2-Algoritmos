@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import view.Comandos;
 public class ViewFactory {
+	public static Display displayR;
 	/*
 	 * clas siempre es el mismo
 	 * comando es el tipo del enum creado
@@ -21,6 +22,7 @@ public class ViewFactory {
 	 */
 	public static Labels getGrafic(Class<? extends EView> clas,Comandos type,Canvas parent,String name) {
 		Display display = Display.getCurrent();
+		displayR=display;
 		Labels result=new Labels(parent,null, type);
 		Menu menu=new Menu(result.label);
 		MenuItem step=new MenuItem(menu, SWT.PUSH);
