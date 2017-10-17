@@ -1,7 +1,7 @@
 package admin.arboles;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.jdt.core.dom.EnhancedForStatement;
 import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
@@ -15,15 +15,17 @@ public class StatementLabel {
 	static int y = 0;
 	Labels labelsactual;
 	Statement statement;
+	ArrayList<Label> lineas;
 	ArrayList<StatementLabel> listaStatements;
 	public StatementLabel(Statement estado) {
 		if (estado == null) {
 		this.statement = estado;
 		this.labelsactual = null;
-		this.listaStatements = new ArrayList<>();}
-	
+		this.listaStatements = new ArrayList<>();
+		this.lineas = new ArrayList<>();}
+		
 	else {		this.statement = estado;
-
+	this.lineas = new ArrayList<>();
 	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, expresion(estado));
 	this.listaStatements = new ArrayList<>();}
 		

@@ -1,6 +1,7 @@
 package view;
 
 import org.eclipse.jdt.core.dom.EnhancedForStatement;
+
 import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
@@ -17,7 +18,9 @@ public class Labels {
 	Image imageB=null;
 	Label label=null;
 	Canvas parent=null;
+	static Composite parent2 = null;
 	public Labels(Composite parent,Image imagen,Comandos comando) {
+		parent2=parent;
 		this.label=new Label(parent, SWT.CENTER);
 		this.image=imagen;
 		this.parent=null;

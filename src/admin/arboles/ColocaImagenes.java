@@ -3,6 +3,7 @@ package admin.arboles;
 import java.util.ArrayList;
 
 import view.EView;
+import view.LineFactory;
 
 public class ColocaImagenes {
 public static void colocarPrincipal() {
@@ -29,8 +30,10 @@ private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatement
 		return y;
 	}
 	for(StatementLabel label : listaStatements) {
+		
 		label.labelsactual.setPos(x, y);
 		if(label.listaStatements.isEmpty()) {
+			label.lineas.add(LineFactory.crearLabel("botton", x+75, y, 100, 8500));
 			y+=150;
 		}
 		else {
@@ -39,5 +42,10 @@ private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatement
 	}
 	
 	return y;
+}
+private static void MetodoAux(StatementLabel metodo) {
+	int x=metodo.getProfundidad();
+	int y = 0;
+	colocarMetodo(x-130,metodo.listaStatements,y);
 }
 }
