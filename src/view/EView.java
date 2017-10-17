@@ -24,6 +24,7 @@ public class EView extends ViewPart {
 	public static Class<? extends EView> clas;
 	public static Canvas canvas;
 	public static ScrolledComposite scroll;
+	public static int counter=1;
 	public EView() {
 
 	}
@@ -47,19 +48,13 @@ public class EView extends ViewPart {
 		        @Override
 		        public void handleEvent(Event event)
 		        {
-		        	int x=0;
-		    		int y=0;
-		        	GC gc = new GC(scroll);
-                    Image image = new Image(ViewFactory.displayR,scroll.getHorizontalBar().getMaximum(),scroll.getVerticalBar().getMaximum());
-                    while(x<scroll.getHorizontalBar().getMaximum() && y<scroll.getVerticalBar().getMaximum()) {
-                    	gc.copyArea(image, x, 0);
-                    	System.out.println("222");
-                    	x+=400;
-                    	y+=400;
-                    }
+                    Image image = new Image(ViewFactory.displayR,canvas.getBounds());
+                    GC gc = new GC(image);
+                    canvas.print(gc);             
                     ImageLoader loader = new ImageLoader();
                     loader.data = new ImageData[]{image.getImageData()};
-                    loader.save("c:/temp/out.png", SWT.IMAGE_PNG);
+                    loader.save(System.getProperty("user.home") + "/Desktop/diagrama"+counter+".png", SWT.IMAGE_PNG);
+                    counter++;
                     gc.dispose();
                 
 		        }
