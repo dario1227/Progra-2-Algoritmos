@@ -1,8 +1,6 @@
 package view;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 
 public class LineFactory {
