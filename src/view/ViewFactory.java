@@ -20,8 +20,10 @@ public class ViewFactory {
 	 * y x y Y con las posiciones respectivas
 	 * me retorna un label configurado, ya con posicion, texto, menu e imagen correspondiente
 	 */
+	public static Class<? extends EView> clase = null;
 	public static Labels getGrafic(Class<? extends EView> clas,Comandos type,Canvas parent,String name) {
 		Display display = Display.getCurrent();
+		clase = clas;
 		displayR=display;
 		Labels result=new Labels(parent,null, type);
 		Menu menu=new Menu(result.label);

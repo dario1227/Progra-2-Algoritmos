@@ -1,6 +1,8 @@
 package view;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 
 public class LineFactory {
@@ -26,8 +28,10 @@ private static Label crearBottonLabel(int x, int y, int largo, int alto) {
 	//parent
 	System.out.println("SI ENTRE AQUI FFFFFFFFFFFFFFFFFAKFNQOOOOOOOOOOOOOOOOOOOOOOO");
 	Label label = new Label(EView.canvas, SWT.CENTER);
-	label.setBounds(x, y, largo, alto);
-	label.setText("HHHHOOLAasasasasasas");
+	Display display = Display.getCurrent();
+	label.setBackgroundImage(new Image(display, ViewFactory.clase.getResourceAsStream("FlechaDownImage.png")));
+	label.setBounds(x, y, largo-5, alto);
+	label.setText(".");
 	return label;
 //System . prueba
 }
