@@ -16,8 +16,10 @@ import org.eclipse.swt.widgets.Label;
 public class Labels {
 	Image image=null;
 	Image imageB=null;
-	Label label=null;
+	public Label label=null;
 	Canvas parent=null;
+	public int x;
+	public int y;
 	static Composite parent2 = null;
 	public Labels(Composite parent,Image imagen,Comandos comando) {
 		parent2=parent;
@@ -74,9 +76,13 @@ public class Labels {
 		}
 	}
 	public void setPos(int x, int y) {
+		this.x=x;
+		this.y=y;
 		this.label.setBounds(x, y, 150, 80);
 	}
-	public static void setPos(Label label, int x, int y) {
-		label.setBounds(x, y,150, 80);
-	}
+//	public  void setPos(Label label, int x, int y) {
+//		this.x=x;
+//		this.y=y;
+//		label.setBounds(x, y,150, 80);
+//	}
 }
