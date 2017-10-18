@@ -53,6 +53,7 @@ private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatement
 			if(listaStatements.get(listaStatements.size()-1).equals(label)) {}
 			else {
 			label.lineas.add(LineFactory.crearLabel("botton", x+90, aux, 10, y-aux));}
+			//Ho;a
 		}
 		setY(y);
 	}
