@@ -6,6 +6,12 @@ import view.EView;
 import view.LineFactory;
 
 public class ColocaImagenes {
+	private static int posY=0;
+private static void  setY(int y) {
+	if(posY<y) {
+		posY=y;
+	}
+}
 public static void colocarPrincipal() {
 	StatementLabel actual =LeeGrafosAST.actuales.get(0);
 	colocarPrincipaAux(actual);
@@ -21,7 +27,7 @@ private static void colocarPrincipaAux(StatementLabel actual) {
 		colocarMetodo(x-130,metodo.listaStatements,y);
 		x+=50;
 	}
-	EView.scroll.setMinSize(x+200,2000);
+	EView.scroll.setMinSize(x+200,posY);
 }
 
 private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements, int y) {
@@ -43,6 +49,7 @@ private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatement
 		else {
 			y= colocarMetodo(x-200,label.listaStatements,y);
 		}
+		setY(y);
 	}
 	
 	return y;
