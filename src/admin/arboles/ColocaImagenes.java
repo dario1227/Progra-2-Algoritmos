@@ -47,7 +47,12 @@ private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatement
 			//lololol
 		}
 		else {
+			label.lineas.add(LineFactory.crearLabel("left", x-200, y+40, 200, 5));
+			int aux = y;
 			y= colocarMetodo(x-200,label.listaStatements,y);
+			if(listaStatements.get(listaStatements.size()-1).equals(label)) {}
+			else {
+			label.lineas.add(LineFactory.crearLabel("botton", x+90, aux, 10, y-aux));}
 		}
 		setY(y);
 	}
