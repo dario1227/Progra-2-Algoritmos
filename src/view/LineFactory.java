@@ -29,6 +29,7 @@ private static Label crearBottonLabel(int x, int y, int largo, int alto) {
 	label.setBounds(x, y, largo, alto);
 	label.setText("HHHHOOLAasasasasasas");
 	return label;
+//System . prueba
 }
 
 //private Label crearRightLabel(int x, int y, int largo, int alto) {
