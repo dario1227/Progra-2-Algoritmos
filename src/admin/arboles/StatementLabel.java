@@ -59,7 +59,7 @@ public class StatementLabel {
 			System.out.println("ENTRE PERO NO HABIA UN ELSE MAE QUE PEREZA");
 			return null;
 		}
-		else {
+		else {//lol
 			
 			System.out.println("ENTRE PERO SIIIIIIIIIIIIII HABIA UN ELSE MAE QUE PEREZA");
 			List<StatementLabel> lista =new ArrayList<>();
