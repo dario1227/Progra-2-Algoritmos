@@ -2,6 +2,7 @@ package admin.arboles;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.EnhancedForStatement;
 import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
@@ -17,20 +18,57 @@ public class StatementLabel {
 	Statement statement;
 	ArrayList<Label> lineas;
 	ArrayList<StatementLabel> listaStatements;
+	ArrayList<StatementLabel> listaElse;
 	public StatementLabel(Statement estado) {
 		if (estado == null) {
 		this.statement = estado;
 		this.labelsactual = null;
 		this.listaStatements = new ArrayList<>();
-		this.lineas = new ArrayList<>();}
-		
-	else {		this.statement = estado;
+		this.lineas = new ArrayList<>();
+		}
+		else if(estado instanceof IfStatement ) {
+			System.out.println("Entre a este constructor");
+			System.out.println("Cai??????????????????????????????????????????");
+			this.statement = estado;
+			this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, expresion(estado));;
+			this.listaStatements = new ArrayList<>();
+			this.lineas = new ArrayList<>();
+			System.out.println("Cai??????????????????????????????????????????");
+			System.out.println("Cai");
+			try {
+			this.listaElse = DecomposeIf(((IfStatement) estado).getElseStatement());}catch(Exception e) {
+				this.listaElse = null;
+			}
+		}
+	else {	
+	this.statement = estado;
 	this.lineas = new ArrayList<>();
 	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, expresion(estado));
 	this.listaStatements = new ArrayList<>();}
 		
 //	this.labelsactual.setPos(x, y);
 //	x+=100;  .getExpression()
+	}
+	/**
+	 * Descompone el else del if para tenerlo en la lista como el listaElse
+	 * @param elseStatement
+	 * @return
+	 */
+	private ArrayList<StatementLabel> DecomposeIf(Statement elseStatement) {
+		if(elseStatement ==null) {
+			System.out.println("ENTRE PERO NO HABIA UN ELSE MAE QUE PEREZA");
+			return null;
+		}
+		else {
+			
+			System.out.println("ENTRE PERO SIIIIIIIIIIIIII HABIA UN ELSE MAE QUE PEREZA");
+			List<StatementLabel> lista =new ArrayList<>();
+	List<Statement>  estados = ((Block) elseStatement).statements();
+	for(Statement estado:estados) {
+		lista.add(new StatementLabel(estado));
+	}
+	return (ArrayList<StatementLabel>) lista;
+		}
 	}
 	/**
 	 * Es el metodo principal que va a entrar en el statementLabel de busqueda

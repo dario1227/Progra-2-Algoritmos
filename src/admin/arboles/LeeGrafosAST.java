@@ -69,11 +69,14 @@ private static void descomponedor(List<?> statements, ArrayList<StatementLabel> 
 		int indice = 0;
 
 	while(indice<statements.size()) {
-		StatementLabel estado =new StatementLabel((Statement) statements.get(indice));
+		StatementLabel estado = null;
+		if(statements.get(indice) instanceof IfStatement) {
+		 estado =new StatementLabel((IfStatement) statements.get(indice));}
+		else {
+			 estado =new StatementLabel((Statement) statements.get(indice));
+		}
 		listaStatements.add(estado);
 		System.out.println("__________________________________________________________________________________");
-		System.out.println(statements.get(indice).getClass());
-		System.out.println(statements.get(indice));
 		System.out.println("__________________________________________________________________________________");
 
 		try {
