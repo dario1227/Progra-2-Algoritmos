@@ -13,6 +13,10 @@ import org.eclipse.ui.PlatformUI;
 
 public class Parser {
 	@SuppressWarnings("restriction")
+	/**
+	 * Metodo para parsear el codigo del actual workbench
+	 * @throws JavaModelException
+	 */
 	public static void saca() throws JavaModelException {
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		IEditorPart activeEditor = page.getActiveEditor();
@@ -25,6 +29,11 @@ public class Parser {
 		CompilationUnit compilado = parse(root);
 		MethodVisitor visitante = new MethodVisitor();
 		compilado.accept(visitante);}
+	/**
+	 * Recive un compilation unit para parsear
+	 * @param unit
+	 * @return
+	 */
 	private static CompilationUnit parse(ICompilationUnit unit) {
 	    @SuppressWarnings("deprecation")
 		ASTParser parser = ASTParser.newParser(AST.JLS3);

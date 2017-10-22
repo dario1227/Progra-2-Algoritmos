@@ -32,7 +32,10 @@ public static void colocarPrincipal() {
 	StatementLabel actual =LeeGrafosAST.actuales.get(0);
 	colocarPrincipaAux(actual);
 }
-
+/**
+ * Coloca el diagrama principal
+ * @param actual
+ */
 private static void colocarPrincipaAux(StatementLabel actual) {
 	int x=0;
 	int y = 0;
@@ -45,7 +48,14 @@ private static void colocarPrincipaAux(StatementLabel actual) {
 	}
 	EView.scroll.setMinSize(x+200,posY);
 }
-
+/**
+ * Coloca un metodo en especifico
+ * @param x
+ * @param listaStatements
+ * @param y
+ * @param padre
+ * @return
+ */
 private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements, int y,StatementLabel padre) {
 	
 	if(listaStatements.isEmpty()) {
@@ -72,12 +82,20 @@ private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatement
 			label.lineas.add(LineFactory.crearLabel("botton", x+90, aux, 10, y-aux));}
 		//adad	//Ho;a
 		}
+		//Marca para el if statement aqui pondre que se compruebe si es y que retorne otro if en caso de que lo sea :D
 		setY(y);
 	}
 	
 	return y;
 }
-
+/**
+ * ayuda a colocar las lineas en caso de un if
+ * @param x
+ * @param y
+ * @param padre
+ * @param listaStatements
+ * @param label
+ */
 private static void LineHelper(int x, int y, StatementLabel padre, ArrayList<StatementLabel> listaStatements, StatementLabel label) {
 	if(padre==null) {
 		return;

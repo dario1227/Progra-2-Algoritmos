@@ -1,5 +1,6 @@
 package admin.arboles;
 import java.util.ArrayList;
+
 import java.util.List;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.jdt.core.dom.Block;
@@ -11,6 +12,11 @@ import org.eclipse.jdt.core.dom.WhileStatement;
 import view.EView;
 import view.Labels;
 import view.ViewFactory;
+/**
+ * Clase que contiene el grafo y todo lo necesario para graficar metodos
+ * @author kenne
+ *
+ */
 public class StatementLabel {
 	public static int x = 0;
 	static int y = 0;
@@ -136,6 +142,12 @@ public class StatementLabel {
 	public  int getProfundidad() {
 		return getprofundidadAux(this.listaStatements,0);
 	}
+	/**
+	 * Metodo sacado de la manga quien sabe como lo saque que calcula el grado de profundidad de un grafo
+	 * @param listaStatements2
+	 * @param x
+	 * @return
+	 */
 	private int getprofundidadAux(ArrayList<StatementLabel> listaStatements2, int x) {
 		if(listaStatements2.isEmpty()) {
 			return x;
