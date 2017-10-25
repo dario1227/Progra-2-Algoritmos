@@ -62,7 +62,7 @@ import org.eclipse.debug.core.model.IVariable;
 	 public boolean hasRegisterGroups() {
 	  return getRegisterGroups().length > 0;
 	 }
-
+	 
 	 public void setLineNumber(int lineNumber) {
 	  mLineNumber = lineNumber;
 	 }
@@ -70,19 +70,12 @@ import org.eclipse.debug.core.model.IVariable;
 	 public String getSourceFile() throws DebugException {
 	  return getDebugTarget().getName();
 	 }
-
+	 
 	@Override
 	public String getModelIdentifier() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public IDebugTarget getDebugTarget() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public ILaunch getLaunch() {
 		// TODO Auto-generated method stub
