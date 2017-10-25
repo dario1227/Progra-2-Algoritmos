@@ -6,6 +6,7 @@ package diagramaflojo;
  * que se mostrara en eclipse, como el toolbar o el view)
  */
 import org.eclipse.core.commands.AbstractHandler;
+
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.debug.core.DebugException;
@@ -29,7 +30,7 @@ public class Ejecutar extends AbstractHandler{
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
 			try {
-			ClaseDebug.leerdebug();}
+			}
 			catch(Exception e) {
 			}
 			HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView("DiagramaFlojo.view1");

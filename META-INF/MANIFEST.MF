@@ -19,13 +19,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.debug.core,
  org.eclipse.debug.ui;bundle-version="3.12.50",
  org.eclipse.jdt.debug.ui;bundle-version="3.8.50",
- org.eclipse.jdt.debug;bundle-version="3.11.50",
- org.eclipse.debug.core.source;bundle-version="3.11.0"
+ org.eclipse.jdt.debug;bundle-version="3.11.50"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.xmlrpc,
  org.eclipse.debug.internal.ui,
- org.eclipse.debug.ui,
  org.eclipse.jdt.core,
  org.eclipse.jdt.core.dom,
  org.eclipse.jdt.internal.debug.ui,
