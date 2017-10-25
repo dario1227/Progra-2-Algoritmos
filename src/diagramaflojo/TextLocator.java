@@ -12,6 +12,7 @@ public class TextLocator implements IPersistableSourceLocator {
 
 	@Override
 	public Object getSourceElement(IStackFrame stackFrame) {
+		
 		  if (stackFrame instanceof TextStackFrame)
 			try {
 				return ((TextStackFrame) stackFrame).getSourceFile();
