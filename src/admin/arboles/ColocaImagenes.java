@@ -29,6 +29,7 @@ private static void  setY(int y) {
 	}
 }
 public static void colocarPrincipal() {
+
 	StatementLabel actual =LeeGrafosAST.actuales.get(0);
 	colocarPrincipaAux(actual);
 }

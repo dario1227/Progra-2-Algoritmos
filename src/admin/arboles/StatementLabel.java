@@ -86,6 +86,7 @@ public class StatementLabel {
 		for(StatementLabel state : this.listaStatements) {
 			if(state.statement.equals(statement)) {
 				label = state;
+				return label;
 			}
 			if (label != null) {
 				break;
@@ -169,5 +170,55 @@ public class StatementLabel {
 			}
 		}
 		return x;
+	}
+	public boolean buscaStatementString(String string) {
+		
+		for(StatementLabel state : this.listaStatements) {
+			if(this.sacaString().equals(string)) {
+				
+				return true;
+			}
+			
+			if(!state.listaStatements.isEmpty()) {
+				return buscaStatementStringAux(string,state);
+			}
+		}
+		return false;
+	}
+	private boolean buscaStatementStringAux(String statement, StatementLabel state) {
+		
+		for(StatementLabel buscado : this.listaStatements) {
+			if(buscado.sacaString().equals(statement)) {
+				
+				return true;
+			}
+			
+			if(!state.listaStatements.isEmpty()) {
+				return buscaStatementStringAux(statement,state);
+			}
+		}
+		return false;
+	}
+	private String sacaString() {
+		String retornable = "";
+		String desarrollable = this.statement.toString();
+		int x = 0;
+		while(x<desarrollable.length()) {
+			String cosa = "";
+			cosa ="" + desarrollable.charAt(x);
+			if( cosa.equals("{")|| cosa.equals(";")) {
+				if( cosa.equals("{")) {
+					return retornable + "{";
+				}
+				else {
+					return retornable + ";";
+				}
+				
+			}
+			else {
+				retornable = retornable + desarrollable.charAt(x);
+			}
+		}
+		return retornable;
 	}
 }
