@@ -1,6 +1,7 @@
 package admin.arboles;
 import java.util.ArrayList;
 
+
 import java.util.List;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -121,7 +122,7 @@ private static void descomponedorAux(Object object, ArrayList<StatementLabel> li
  * @param unit
  * @return
  */
-private static CompilationUnit parse(ICompilationUnit unit) {
+public static CompilationUnit parse(ICompilationUnit unit) {
     @SuppressWarnings("deprecation")
 	ASTParser parser = ASTParser.newParser(AST.JLS3);
     parser.setKind(ASTParser.K_COMPILATION_UNIT);

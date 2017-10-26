@@ -36,13 +36,14 @@ public class Ejecutar extends AbstractHandler{
 			HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView("DiagramaFlojo.view1");
 			Labels.dispose();
 			LeeGrafosAST.saca();
+			ColocaImagenes.posY=0;
 			ColocaImagenes.colocarPrincipal();
-			ConectedSearch.search(LeeGrafosAST.actuales, ClaseDebug.leerdebug()-1);
+		ConectedSearch.search(LeeGrafosAST.actuales, ClaseDebug.leerdebug()-1);
 		} catch (PartInitException e1) {
 			e1.printStackTrace();
 		} catch (JavaModelException e) {
 			e.printStackTrace();
-		} catch (DebugException e) {
+	} catch (DebugException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 

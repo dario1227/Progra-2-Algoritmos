@@ -20,6 +20,7 @@ public class Labels {
 	Canvas parent=null;
 	public int x;
 	public int y;
+	public boolean active = false;
 	static Composite parent2 = null;
 	public Labels(Composite parent,Image imagen,Comandos comando) {
 		parent2=parent;

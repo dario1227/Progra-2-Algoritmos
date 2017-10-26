@@ -22,7 +22,7 @@ import view.EView;
 import view.LineFactory;
 
 public class ColocaImagenes {
-	private static int posY=0;
+	public static int posY=0;
 private static void  setY(int y) {
 	if(posY<y) {
 		posY=y;
@@ -57,7 +57,7 @@ private static void colocarPrincipaAux(StatementLabel actual) {
  * @param padre
  * @return
  */
-private static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements, int y,StatementLabel padre) {
+public static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements, int y,StatementLabel padre) {
 	
 	if(listaStatements.isEmpty()) {
 		return y;
