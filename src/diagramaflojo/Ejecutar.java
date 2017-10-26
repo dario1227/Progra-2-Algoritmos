@@ -37,9 +37,13 @@ public class Ejecutar extends AbstractHandler{
 			Labels.dispose();
 			LeeGrafosAST.saca();
 			ColocaImagenes.colocarPrincipal();
+			ConectedSearch.search(LeeGrafosAST.actuales, ClaseDebug.leerdebug()-1);
 		} catch (PartInitException e1) {
 			e1.printStackTrace();
 		} catch (JavaModelException e) {
+			e.printStackTrace();
+		} catch (DebugException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		return null;

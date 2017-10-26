@@ -7,7 +7,8 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IThread;
 
 public class ClaseDebug {
-public static void leerdebug() throws DebugException {
+public static int leerdebug() throws DebugException {
+	try {
 	DebugPlugin plugin = DebugPlugin.getDefault();
     ILaunchManager manager = plugin.getLaunchManager();
     IDebugTarget[] target = manager.getDebugTargets();
@@ -23,6 +24,10 @@ public static void leerdebug() throws DebugException {
     	}catch(Exception e)
     	{}
     	x++;
+    	return  target[0].getThreads()[4].getStackFrames()[0].getLineNumber();
+    }}catch(Exception e ){
+    	return 0;
     }
+	return 0;
 }
 }

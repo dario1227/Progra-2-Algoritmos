@@ -22,6 +22,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 @SuppressWarnings({ "restriction" })
 public class LeeGrafosAST {
+	static public CompilationUnit unit;
 	public static List<StatementLabel> actuales = new ArrayList<StatementLabel>();
 /**
  * Esta clase lo que saca es el compilation Unit y los metodos de la clase actual en el workbench
@@ -39,6 +40,7 @@ public static void saca() throws JavaModelException {
 	    
 }
 	CompilationUnit compilado = parse(root);
+	unit = compilado;
 	MethodVisitor visitante = new MethodVisitor();
 	compilado.accept(visitante);
 	revisaContenido(visitante.methods);

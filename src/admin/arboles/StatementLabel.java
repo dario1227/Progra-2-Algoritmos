@@ -20,10 +20,10 @@ import view.ViewFactory;
 public class StatementLabel {
 	public static int x = 0;
 	static int y = 0;
-	Labels labelsactual;
-	Statement statement;
+	public Labels labelsactual;
+	public Statement statement;
 	ArrayList<Label> lineas;
-	ArrayList<StatementLabel> listaStatements;
+	public ArrayList<StatementLabel> listaStatements;
 	ArrayList<StatementLabel> listaElse;
 	public StatementLabel(Statement estado) {
 		if (estado == null) {
@@ -31,6 +31,11 @@ public class StatementLabel {
 		this.labelsactual = null;
 		this.listaStatements = new ArrayList<>();
 		this.lineas = new ArrayList<>();
+		if(this.statement !=null) {
+			System.out.println("DNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
+			System.out.println(LeeGrafosAST.unit.getLineNumber(this.statement.getStartPosition()) - 1);
+			System.out.println(this.statement);
+		}
 		}
 		else if(estado instanceof IfStatement ) {
 			System.out.println("Entre a este constructor");
@@ -41,6 +46,11 @@ public class StatementLabel {
 			this.lineas = new ArrayList<>();
 			System.out.println("Cai??????????????????????????????????????????");
 			System.out.println("Cai");
+			if(this.statement !=null) {
+				System.out.println("DNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
+				System.out.println(this.statement);
+				System.out.println(LeeGrafosAST.unit.getLineNumber(this.statement.getStartPosition()) - 1);
+			}
 			try {
 			this.listaElse = DecomposeIf(((IfStatement) estado).getElseStatement());}catch(Exception e) {
 				this.listaElse = null;
@@ -50,7 +60,12 @@ public class StatementLabel {
 	this.statement = estado;
 	this.lineas = new ArrayList<>();
 	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, expresion(estado));
-	this.listaStatements = new ArrayList<>();}
+	this.listaStatements = new ArrayList<>();
+	if(this.statement !=null) {
+		System.out.println("DNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
+		System.out.println(LeeGrafosAST.unit.getLineNumber(this.statement.getStartPosition()) - 1);
+		System.out.println(this.statement);
+	}}
 		
 //	this.labelsactual.setPos(x, y);
 //	x+=100;  .getExpression()
