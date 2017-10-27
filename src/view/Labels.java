@@ -86,4 +86,8 @@ public class Labels {
 //		this.y=y;
 //		label.setBounds(x, y,150, 80);
 //	}
+	public void hide() {
+		this.label.setVisible(false);
+		
+	}
 }

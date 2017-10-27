@@ -21,6 +21,8 @@ import org.eclipse.jdt.internal.ui.javaeditor.JavaEditor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+
+import view.Labels;
 @SuppressWarnings({ "restriction" })
 public class LeeGrafosAST {
 	static public CompilationUnit unit;
@@ -31,6 +33,11 @@ public class LeeGrafosAST {
  */
 public static void saca() throws JavaModelException {
 	try {
+		try {
+			Labels.dispose();
+		}catch(Exception e) {
+			
+		}
 	actuales = new ArrayList<StatementLabel>();
 	IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 	IEditorPart activeEditor = page.getActiveEditor();

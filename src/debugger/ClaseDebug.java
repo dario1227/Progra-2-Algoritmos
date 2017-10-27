@@ -12,22 +12,24 @@ public static int leerdebug() throws DebugException {
 	DebugPlugin plugin = DebugPlugin.getDefault();
     ILaunchManager manager = plugin.getLaunchManager();
     IDebugTarget[] target = manager.getDebugTargets();
-    System.out.println(target[0].getThreads()[0]);
-    int x = 0;
-    System.out.println("EL NUMERO FUE"+ target[0].getThreads()[4].getStackFrames()[0]);
-    for(IThread stack: target[0].getThreads() ) {
-    	try {
-    		if(stack.getStackFrames()[0].getLineNumber()==5) {
-    			System.out.println(x);
-    		}
-    		System.out.println(stack.getStackFrames()[0].getLineNumber());
-    	}catch(Exception e)
-    	{}
-    	x++;
-    	return  target[0].getThreads()[4].getStackFrames()[0].getLineNumber();
-    }}catch(Exception e ){
+//    System.out.println(target[0].getThreads()[4].getStackFrames()[0].getLineNumber());
+    return  target[0].getThreads()[4].getStackFrames()[0].getLineNumber();
+
+//    int x = 0;
+//    
+//    for(IThread stack: target[0].getThreads() ) {
+//    	System.out.println(x);
+//    	try {
+//    		 return  target[0].getThreads()[4].getStackFrames()[0].getLineNumber();
+//    	}catch(Exception e)
+//    	{
+//    		return 0;
+//    	}
+//  
+//
+//    }
+    }catch(Exception e ){
     	return 0;
     }
-	return 0;
 }
 }

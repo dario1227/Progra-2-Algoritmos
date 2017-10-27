@@ -23,6 +23,7 @@ public static ArrayList<Boolean> search(List<StatementLabel> actuales, int numer
 		if(LeeGrafosAST.unit.getLineNumber(estado.statement.getStartPosition()) - 1==numero) {
 			
 			if(estado.labelsactual.active==false) {
+				boleans.add(true);
 				estado.labelsactual.active = true;
 				Labels.debuggerImage(estado.labelsactual);
 			}
@@ -38,14 +39,26 @@ public static ArrayList<Boolean> search(List<StatementLabel> actuales, int numer
 private static void searchAux(ArrayList<StatementLabel> listaStatements, ArrayList<Boolean> boleans, int numero) {
 	for(StatementLabel estado:listaStatements) {
 		if(estado.statement!=null) {
+			if(estado.labelsactual.active==true) {
+				estado.labelsactual.active=false;
+				try {
+				Labels.debuggerImage(estado.labelsactual);}catch(Exception e) {
+					
+				}
+			}
 		if(LeeGrafosAST.unit.getLineNumber(estado.statement.getStartPosition()) - 1==numero) {
-			//activa
-			Labels.debuggerImage(estado.labelsactual);
+			
+			if(estado.labelsactual.active==false) {
+				estado.labelsactual.active = true;
+				boleans.add(true);
+				Labels.debuggerImage(estado.labelsactual);
+			}
+			
 		}
 		
 		}
-		
 		searchAux(estado.listaStatements,boleans,numero);
 		}
+	return ;
 }
 }

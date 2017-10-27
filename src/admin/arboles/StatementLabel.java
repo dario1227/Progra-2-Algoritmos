@@ -236,4 +236,12 @@ public class StatementLabel {
 		}
 		return retornable;
 	}
+	public void hidePictures(ArrayList<StatementLabel> listaStatements2) {
+try {
+		this.labelsactual.hide();
+}catch(Exception e) {}
+		for(Label label:this.lineas) {
+			label.setVisible(false);
+		}
+	}
 }

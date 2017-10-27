@@ -15,9 +15,11 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import Listeners.DebuggerListener;
 import admin.arboles.ColocaImagenes;
 import admin.arboles.LeeGrafosAST;
 import debugger.ClaseDebug;
@@ -37,15 +39,34 @@ public class Ejecutar extends AbstractHandler{
 			Labels.dispose();
 			LeeGrafosAST.saca();
 			ColocaImagenes.posY=0;
+			DebuggerListener.running=true;
 			ColocaImagenes.colocarPrincipal();
-		ConectedSearch.search(LeeGrafosAST.actuales, ClaseDebug.leerdebug()-1);
-		} catch (PartInitException e1) {
+//		ConectedSearch.search(LeeGrafosAST.actuales, ClaseDebug.leerdebug()-1);
+			new Thread(new Runnable() {
+			      public void run() {
+			         while (true) {
+			            try { Thread.sleep(500); } catch (Exception e) { }
+			            Display.getDefault().asyncExec(new Runnable() {
+			               public void run() {
+			            	   try {
+								DebuggerListener.activado();
+							} catch (DebugException | JavaModelException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+			               }
+			            });
+			         }
+			      }
+			   }).start(); }
+		
+			catch (PartInitException e1) {
 			e1.printStackTrace();
 		} catch (JavaModelException e) {
 			e.printStackTrace();
-	} catch (DebugException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//	} catch (DebugException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
 		} 
 		return null;
 	}
