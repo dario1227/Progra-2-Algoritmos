@@ -28,7 +28,7 @@ public class ViewFactory {
 		Labels result=new Labels(parent,null, type);
 		Menu menu=new Menu(result.label);
 		MenuItem step=new MenuItem(menu, SWT.PUSH);
-		step.setText("Step In");
+		step.setText("Abrir...");
 		 step.addListener(SWT.Selection, new Listener()
 		    {
 		        @Override
