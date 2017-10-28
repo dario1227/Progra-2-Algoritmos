@@ -69,6 +69,12 @@ public class Labels {
 		for(int i=0;i<hijos.length;i++) {
 			hijos[i].setVisible(false);
 		}}
+	public static void show() {
+		Canvas varuable = EView.canvas;
+		Control[] hijos=varuable.getChildren();
+		for(int i=0;i<hijos.length;i++) {
+			hijos[i].setVisible(true);
+		}}
 	public static void dispose() {
 			Canvas varuable = EView.canvas;
 			Control[] hijos=varuable.getChildren();

@@ -61,4 +61,47 @@ private static void searchAux(ArrayList<StatementLabel> listaStatements, ArrayLi
 		}
 	return ;
 }
+public static ArrayList<Boolean> search2(List<StatementLabel> actuales, int numero){
+	if(numero == 0 || actuales == null) {
+		return new ArrayList<Boolean>();
+	}
+	ArrayList<Boolean> boleans = new ArrayList<Boolean>();
+	for(StatementLabel estado:actuales) {
+		if(estado.statement!=null) {
+			if(estado.labelsactual.active==true) {
+	
+
+			}
+		if(LeeGrafosAST.unit.getLineNumber(estado.statement.getStartPosition()) - 1==numero) {
+			
+			if(estado.labelsactual.active==false) {
+				boleans.add(true);
+	
+			}
+			
+		}
+		
+		}
+		searchAux2(estado.listaStatements,boleans,numero);
+		}
+	return boleans;
+}
+private static void searchAux2(ArrayList<StatementLabel> listaStatements, ArrayList<Boolean> boleans, int numero) {
+	for(StatementLabel estado:listaStatements) {
+		if(estado.statement!=null) {
+			if(estado.labelsactual.active==true) {
+			}
+		if(LeeGrafosAST.unit.getLineNumber(estado.statement.getStartPosition()) - 1==numero) {
+			
+			if(estado.labelsactual.active==false) {
+				boleans.add(true);
+			}
+			
+		}
+		
+		}
+		searchAux2(estado.listaStatements,boleans,numero);
+		}
+	return ;
+}
 }

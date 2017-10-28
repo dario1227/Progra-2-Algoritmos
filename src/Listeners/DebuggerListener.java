@@ -9,7 +9,9 @@ import admin.arboles.LeeGrafosAST;
 import debugger.ClaseDebug;
 import debugger.CompilationListener;
 import debugger.DetectMethodDiagramer;
+import debugger.MetodoActualConseguir;
 import diagramaflojo.ConectedSearch;
+import view.EView;
 import view.Labels;
 
 public class DebuggerListener implements Runnable {
@@ -42,19 +44,33 @@ public class DebuggerListener implements Runnable {
 			System.out.println("LOOOOOOOOOOOOOOOL");
 			
 			if(CompilationListener.compruebaCompilated()==false) {
-				Labels.dispose();
-				LeeGrafosAST.saca();
-				ColocaImagenes.colocarPrincipal();
-				System.out.println("ESTOY EN EL  THREAD MAE QUE THREAD NUEVOOOOOOOO");
-			}
-			else {
+//				Labels.dispose();
+//				LeeGrafosAST.saca();
+//				ColocaImagenes.colocarPrincipal();
+//				System.out.println("ESTOY EN EL  THREAD MAE QUE THREAD NUEVOOOOOOOO");
 			
-			if(ConectedSearch.search(LeeGrafosAST.actuales, ClaseDebug.leerdebug()-1).contains(true)) {
+				MetodoActualConseguir.diagramar();
+				EView.scroll.setMinSize(MetodoActualConseguir.actual.getProfundidad()*200+200+200,ColocaImagenes.posY);
+				ConectedSearch.search(MetodoActualConseguir.actual.listaStatements, ClaseDebug.leerdebug()-1).contains(true);
+				}
+			
+			else {
+				if(MetodoActualConseguir.actual!=null) {
+			if(ConectedSearch.search(MetodoActualConseguir.actual.listaStatements, ClaseDebug.leerdebug()-1).contains(true)) {
+			
 			}
 			else {
+				MetodoActualConseguir.diagramar();
+				EView.scroll.setMinSize(MetodoActualConseguir.actual.getProfundidad()*200+200,ColocaImagenes.posY);
 				ConectedSearch.search(LeeGrafosAST.actuales, ClaseDebug.leerdebug()-1).contains(true);
 
 			}
+			}
+				else {
+					MetodoActualConseguir.diagramar();
+					EView.scroll.setMinSize(MetodoActualConseguir.actual.getProfundidad()*200+200,ColocaImagenes.posY);
+					ConectedSearch.search(LeeGrafosAST.actuales, ClaseDebug.leerdebug()-1).contains(true);
+				}
 		}
 			}
 	
