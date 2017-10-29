@@ -24,7 +24,7 @@ public class StatementLabel {
 	public Statement statement;
 	ArrayList<Label> lineas;
 	public ArrayList<StatementLabel> listaStatements;
-	ArrayList<StatementLabel> listaElse;
+	public ArrayList<StatementLabel> listaElse;
 	public StatementLabel(Statement estado) {
 		if (estado == null) {
 		this.statement = estado;
@@ -32,27 +32,22 @@ public class StatementLabel {
 		this.listaStatements = new ArrayList<>();
 		this.lineas = new ArrayList<>();
 		if(this.statement !=null) {
-			System.out.println("DNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
-			System.out.println(LeeGrafosAST.unit.getLineNumber(this.statement.getStartPosition()) - 1);
-			System.out.println(this.statement);
+			
 		}
 		}
 		else if(estado instanceof IfStatement ) {
-			System.out.println("Entre a este constructor");
-			System.out.println("Cai??????????????????????????????????????????");
+
 			this.statement = estado;
 			this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, expresion(estado));;
 			this.listaStatements = new ArrayList<>();
 			this.lineas = new ArrayList<>();
-			System.out.println("Cai??????????????????????????????????????????");
-			System.out.println("Cai");
+
 			if(this.statement !=null) {
-				System.out.println("DNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
-				System.out.println(this.statement);
-				System.out.println(LeeGrafosAST.unit.getLineNumber(this.statement.getStartPosition()) - 1);
+				
 			}
 			try {
 			this.listaElse = DecomposeIf(((IfStatement) estado).getElseStatement());}catch(Exception e) {
+				
 				this.listaElse = null;
 			}
 		}
@@ -62,9 +57,6 @@ public class StatementLabel {
 	this.labelsactual = ViewFactory.getGrafic(EView.clas, Labels.toComando(estado),EView.canvas, expresion(estado));
 	this.listaStatements = new ArrayList<>();
 	if(this.statement !=null) {
-		System.out.println("DNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
-		System.out.println(LeeGrafosAST.unit.getLineNumber(this.statement.getStartPosition()) - 1);
-		System.out.println(this.statement);
 	}}
 		
 //	this.labelsactual.setPos(x, y);

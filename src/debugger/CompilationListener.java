@@ -19,11 +19,14 @@ import admin.arboles.StatementLabel;
 public class CompilationListener {
 @SuppressWarnings("restriction")
 public static boolean compruebaCompilated() throws JavaModelException {
+	try {
 	CompilationUnit compilado = saca();
 	System.out.println(compilado.getClass().getName());
 	System.out.println(LeeGrafosAST.unit.getClass().getName());
 	return compilado.getJavaElement().getElementName().equals(LeeGrafosAST.unit.getJavaElement().getElementName());
-
+	}catch(Exception e) {
+		return false;
+	}
 }
 public static CompilationUnit saca() throws JavaModelException {
 	try {

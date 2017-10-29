@@ -69,7 +69,7 @@ public static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements
 		if(label.listaStatements.isEmpty()) {
 			if(listaStatements.get(listaStatements.size()-1).equals(label)) {}
 			else {
-			label.lineas.add(LineFactory.crearLabel("botton", x+75, y+80, 10, 150));}
+			label.lineas.add(LineFactory.crearLabel("botton", x+73, y+80, 10, 150));}
 			y+=150;
 			//LOL
 			//lololol
@@ -78,9 +78,19 @@ public static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements
 			label.lineas.add(LineFactory.crearLabel("left", x-200, y+40, 200, 5));
 			int aux = y;
 			y= colocarMetodo(x-200,label.listaStatements,y,label);
+			if(label.statement instanceof IfStatement ) {
+				if(label.listaElse != null) {
+				if(!label.listaElse.isEmpty()) {
+					System.out.println("ENCONTRE EL IF LPM");
+					int auxiliar = y;
+					if(y-aux <label.listaElse.size()*150 ) {
+						y = aux+label.listaElse.size()*150;
+					}
+				}}
+			}
 			if(listaStatements.get(listaStatements.size()-1).equals(label)) {}
 			else {
-			label.lineas.add(LineFactory.crearLabel("botton", x+90, aux, 10, y-aux));}
+			label.lineas.add(LineFactory.crearLabel("botton", x+73, aux, 10, y-aux));}
 		//adad	//Ho;a
 		}
 		//Marca para el if statement aqui pondre que se compruebe si es y que retorne otro if en caso de que lo sea :D

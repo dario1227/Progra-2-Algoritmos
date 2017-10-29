@@ -57,6 +57,10 @@ public class ViewFactory {
 			result.image=new Image(display, clas.getResourceAsStream("CondicionIf.png"));
 			result.imageB=new Image(display, clas.getResourceAsStream("CondicionIfB.png"));
 		}
+		else if(type == Comandos.Return) {
+			result.image=new Image(display, clas.getResourceAsStream("CondicionIf.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("CondicionIfB.png"));
+		}
 		result.label.setText("\n"+name);
 		result.label.setBackgroundImage(result.image);
 		return result;
