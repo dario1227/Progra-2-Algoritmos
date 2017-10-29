@@ -58,8 +58,16 @@ public class ViewFactory {
 			result.imageB=new Image(display, clas.getResourceAsStream("CondicionIfB.png"));
 		}
 		else if(type == Comandos.Return) {
-			result.image=new Image(display, clas.getResourceAsStream("CondicionIf.png"));
-			result.imageB=new Image(display, clas.getResourceAsStream("CondicionIfB.png"));
+			result.image=new Image(display, clas.getResourceAsStream("Return.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("ReturnB.png"));
+		}
+		else if(type == Comandos.Decalaration) {
+			result.image=new Image(display, clas.getResourceAsStream("Declaration.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("DeclarationB.png"));
+		}
+		else if(type == Comandos.Variable) {
+			result.image=new Image(display, clas.getResourceAsStream("Variable.png"));
+			result.imageB=new Image(display, clas.getResourceAsStream("VariableB.png"));
 		}
 		result.label.setText("\n"+name);
 		result.label.setBackgroundImage(result.image);

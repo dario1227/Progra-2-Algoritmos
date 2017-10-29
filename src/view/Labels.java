@@ -6,6 +6,7 @@ import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.ReturnStatement;
+import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -56,14 +57,20 @@ public class Labels {
 			return comando;
 		}
 		else if(object instanceof ExpressionStatement) {
-			comando=Comandos.Accion;
+			
+			comando=Comandos.Decalaration;
 			return comando;
 		}
 		else if(object instanceof ReturnStatement ) {
 			comando = Comandos.Return;
 			return comando;
 		}
+		else if(object instanceof  VariableDeclarationStatement) {
+			comando = Comandos.Variable;
+		}
+//		else if(object instanceof )
 		else {
+
 			comando = Comandos.Accion;
 		}
 		return comando;

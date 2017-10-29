@@ -4,5 +4,5 @@ package view;
  * la imagen de fondon en el factory
  */
 public enum Comandos {
-	If,While,Accion,For,Decalaration,Return;	
+	If,While,Accion,For,Decalaration,Return,Variable;	
 }
