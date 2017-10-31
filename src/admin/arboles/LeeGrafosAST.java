@@ -81,7 +81,9 @@ private static void descomponedor(List<?> statements, ArrayList<StatementLabel> 
 	while(indice<statements.size()) {
 		StatementLabel estado = null;
 		if(statements.get(indice) instanceof IfStatement) {
-		 estado =new StatementLabel((IfStatement) statements.get(indice));}
+		 estado =new StatementLabel((IfStatement) statements.get(indice));
+		 
+		}
 		else {
 			 estado =new StatementLabel((Statement) statements.get(indice));
 		}

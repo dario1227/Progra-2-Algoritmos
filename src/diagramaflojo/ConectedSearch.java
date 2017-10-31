@@ -3,6 +3,8 @@ package diagramaflojo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jdt.core.dom.IfStatement;
+
 import admin.arboles.LeeGrafosAST;
 import admin.arboles.StatementLabel;
 import view.Labels;
@@ -31,6 +33,13 @@ public static ArrayList<Boolean> search(List<StatementLabel> actuales, int numer
 		}
 		
 		}
+//		if(estado.statement instanceof IfStatement) {
+//			if(estado.listaElse !=null) {
+//				if(!estado.listaElse.isEmpty()) {
+//					searchAux(estado.listaElse,boleans,numero);
+//				}
+//			}
+//		}
 		searchAux(estado.listaStatements,boleans,numero);
 		}
 	return boleans;
@@ -56,7 +65,14 @@ private static void searchAux(ArrayList<StatementLabel> listaStatements, ArrayLi
 			
 		}
 		
-		}
+		}		
+//		if(estado.statement instanceof IfStatement) {
+//			if(estado.listaElse !=null) {
+//				if(!estado.listaElse.isEmpty()) {
+//					searchAux(estado.listaElse,boleans,numero);
+//				}
+//			}
+//		}
 		searchAux(estado.listaStatements,boleans,numero);
 		}
 	return ;
@@ -67,6 +83,7 @@ public static ArrayList<Boolean> search2(List<StatementLabel> actuales, int nume
 	}
 	ArrayList<Boolean> boleans = new ArrayList<Boolean>();
 	for(StatementLabel estado:actuales) {
+		
 		if(estado.statement!=null) {
 			if(estado.labelsactual.active==true) {
 	
@@ -81,6 +98,13 @@ public static ArrayList<Boolean> search2(List<StatementLabel> actuales, int nume
 			
 		}
 		
+		if(estado.statement instanceof IfStatement) {
+			if(estado.listaElse !=null) {
+				if(!estado.listaElse.isEmpty()) {
+					searchAux2(estado.listaElse,boleans,numero);
+				}
+			}
+		}
 		}
 		searchAux2(estado.listaStatements,boleans,numero);
 		}
@@ -100,6 +124,13 @@ private static void searchAux2(ArrayList<StatementLabel> listaStatements, ArrayL
 		}
 		
 		}
+//		if(estado.statement instanceof IfStatement) {
+//			if(estado.listaElse !=null) {
+//				if(!estado.listaElse.isEmpty()) {
+//					searchAux2(estado.listaElse,boleans,numero);
+//				}
+//			}
+//		}
 		searchAux2(estado.listaStatements,boleans,numero);
 		}
 	return ;

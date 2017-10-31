@@ -31,6 +31,7 @@ public class Labels {
 		this.parent=null;
 	}
 	public static void debuggerImage(Labels result) {
+
 		Image imagenActual=result.label.getBackgroundImage();
 		if(imagenActual==result.image) {
 			result.label.setBackgroundImage(result.imageB);
@@ -38,7 +39,7 @@ public class Labels {
 		
 		else{
 			result.label.setBackgroundImage(result.image);
-		}		
+		}	
 	}
 
 	public static Comandos toComando(Object object) {

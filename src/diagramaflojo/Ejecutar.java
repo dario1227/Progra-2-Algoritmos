@@ -27,9 +27,12 @@ import javafx.scene.shape.Line;
 import view.Labels;
 import view.LineFactory;
 public class Ejecutar extends AbstractHandler{
-
+public static Thread ejecutando;
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
+		if(ejecutando!=null) {
+			ejecutando.stop();
+		}
 		try {
 			try {
 			}
@@ -42,7 +45,7 @@ public class Ejecutar extends AbstractHandler{
 			DebuggerListener.running=true;
 			ColocaImagenes.colocarPrincipal();
 //		ConectedSearch.search(LeeGrafosAST.actuales, ClaseDebug.leerdebug()-1);
-			new Thread(new Runnable() {
+			ejecutando = new Thread(new Runnable() {
 			      public void run() {
 			         while (true) {
 			            try { Thread.sleep(500); } catch (Exception e) { }
@@ -51,14 +54,15 @@ public class Ejecutar extends AbstractHandler{
 			            	   try {
 								DebuggerListener.activado();
 							} catch (DebugException | JavaModelException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 			               }
 			            });
 			         }
 			      }
-			   }).start(); }
+			   }); 
+			ejecutando.start();
+			}
 		
 			catch (PartInitException e1) {
 			e1.printStackTrace();

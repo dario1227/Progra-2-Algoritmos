@@ -19,7 +19,7 @@ public static void diagramar() throws DebugException, JavaModelException {
 	for(StatementLabel state : lista) {
 		if(ConectedSearch.search2(state.listaStatements, ClaseDebug.leerdebug()-1).contains(true)) {
 			if(state.equals(actual)) {
-				
+				actual=state;
 			}
 			else {
 				actual=state;

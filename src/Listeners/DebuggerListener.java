@@ -55,7 +55,8 @@ public class DebuggerListener implements Runnable {
 				}
 			
 			else {
-				if(MetodoActualConseguir.actual!=null) {
+				try {
+			if(MetodoActualConseguir.actual!=null) {
 			if(ConectedSearch.search(MetodoActualConseguir.actual.listaStatements, ClaseDebug.leerdebug()-1).contains(true)) {
 			
 			}
@@ -71,7 +72,10 @@ public class DebuggerListener implements Runnable {
 					EView.scroll.setMinSize(MetodoActualConseguir.actual.getProfundidad()*200+200,ColocaImagenes.posY);
 					ConectedSearch.search(LeeGrafosAST.actuales, ClaseDebug.leerdebug()-1).contains(true);
 				}
-		}
+				}catch(Exception e) {
+					MetodoActualConseguir.diagramar();
+				}
+			}
 			}
 	
 	}

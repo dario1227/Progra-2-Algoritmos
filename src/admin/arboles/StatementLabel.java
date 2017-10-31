@@ -78,6 +78,8 @@ public class StatementLabel {
 			List<StatementLabel> lista =new ArrayList<>();
 	List<Statement>  estados = ((Block) elseStatement).statements();
 	for(Statement estado:estados) {
+		System.out.println("ENTRE PERO SIIIIIIIIIIIIII HABIA UN ELSE MAE QUE PEREZA");
+		System.out.println(estado.getClass());
 		lista.add(new StatementLabel(estado));
 	}
 	return (ArrayList<StatementLabel>) lista;
