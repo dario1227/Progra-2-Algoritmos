@@ -60,6 +60,7 @@ private static void colocarPrincipaAux(StatementLabel actual) {
 public static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements, int y,StatementLabel padre) {
 	
 	if(listaStatements.isEmpty()) {
+		System.out.println("LOL NO HABIA NADA");
 		return y;
 	}
 	for(StatementLabel label : listaStatements) {
@@ -67,11 +68,17 @@ public static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements
 		label.labelsactual.setPos(x, y);
 		LineHelper(x,y,padre,listaStatements,label);
 		if(label.listaStatements.isEmpty()) {
+			
 			if(listaStatements.get(listaStatements.size()-1).equals(label)) {}
 			else {
 			label.lineas.add(LineFactory.crearLabel("botton", x+73, y+80, 10, 150));}
 			y+=150;
-			//LOL
+			if(label.statement instanceof IfStatement && !label.listaElse.isEmpty()) {
+				y+=colocarElse(label.listaElse,x,y,label.listaStatements.isEmpty(),label.equals(listaStatements.get(listaStatements.size()-1)))-y;
+				setY(y);
+				//LOL
+			}
+			
 			//lololol
 		}
 		else {
@@ -88,16 +95,27 @@ public static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements
 					if(y-aux <label.listaElse.size()*150 ) {
 						
 						y = aux+label.listaElse.size()*150 + 150;
+						setY(y);
 						label.lineas.add(LineFactory.crearLabel("botton", x-127, auxiliar-150, 10, y-auxiliar+90));
 						label.lineas.add(LineFactory.crearLabel("left", x-127, y-60, 200, 5));
 						label.lineas.add(LineFactory.crearLabel("botton", x+73, y-150+80, 10, 15));
 					}
-					else {
-						
+					else if(y-aux !=label.listaElse.size()*150){
+						System.out.println("SOY MAYOR");
+						setY(y);
 						label.lineas.add(LineFactory.crearLabel("botton", x+73, label.listaElse.get(label.listaElse.size()-1).labelsactual.y+80 , 10, y-(label.listaElse.get(label.listaElse.size()-1).labelsactual.y +150 )));
-						label.lineas.add(LineFactory.crearLabel("botton", x-127, auxiliar-150, 10, y-auxiliar+90));
+						
+						label.lineas.add(LineFactory.crearLabel("botton", x-127, label.labelsactual.y+80, 10, y-label.labelsactual.y-140));
 						label.lineas.add(LineFactory.crearLabel("left", x-127, y-60, 200, 5));
 						label.lineas.add(LineFactory.crearLabel("botton", x+73, y-150+80, 10, 15));
+					}
+					else {
+						setY(y);
+						label.lineas.add(LineFactory.crearLabel("botton", x+73, label.listaElse.get(label.listaElse.size()-1).labelsactual.y+80 , 10, y-(label.listaElse.get(label.listaElse.size()-1).labelsactual.y +150 )));
+						label.lineas.add(LineFactory.crearLabel("botton", x-127, auxiliar-150, 10, y-auxiliar+90+150));
+						label.lineas.add(LineFactory.crearLabel("left", x-127, y-60+150, 200, 5));
+						label.lineas.add(LineFactory.crearLabel("botton", x+73, y+80, 10, 15));
+						y+=150;
 					}
 				}
 				else {
@@ -118,18 +136,20 @@ public static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements
 		//adad	//Ho;a
 		}
 		//Marca para el if statement aqui pondre que se compruebe si es y que retorne otro if en caso de que lo sea :D
-		setY(y);
+		setY(y+150);
 	}
 	
 	return y;
 }
-private static void colocarElse(ArrayList<StatementLabel> listaElse, int x, int y, boolean tienehijos, boolean ultima) {
+private static int colocarElse(ArrayList<StatementLabel> listaElse, int x, int y, boolean tienehijos, boolean ultima) {
 	int aux = y;
 	int j = 0;
 	for(StatementLabel estado : listaElse) {
 		if(!ultima) {
 			estado.labelsactual.setPos(x, y);
+			estado.lineas.add(LineFactory.crearLabel("botton", x+73, y-80, 10, 150));
 			y+=150;
+			estado.lineas.add(LineFactory.crearLabel("botton", x+73, y-80, 10, 150));
 		}
 		
 		if(ultima) {
@@ -146,7 +166,7 @@ private static void colocarElse(ArrayList<StatementLabel> listaElse, int x, int 
 //		estado.labelsactual.setPos(x, y);
 //		y+=150;
 	}
-
+ return y;
 }
 /**
  * ayuda a colocar las lineas en caso de un if
