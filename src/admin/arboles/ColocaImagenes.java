@@ -127,7 +127,7 @@ public static int colocarMetodo(int x, ArrayList<StatementLabel> listaStatements
 				else {
 				label.lineas.add(LineFactory.crearLabel("botton", x-127, y-150, 10, 90));
 				label.lineas.add(LineFactory.crearLabel("left", x-127, y-60, 200, 5));
-				label.lineas.add(LineFactory.crearLabel("botton", x+73, aux-150+95, 10, y-aux));
+				label.lineas.add(LineFactory.crearLabel("botton", x+73, aux+80, 10, y-aux-135));
 				}
 			}
 			if(listaStatements.get(listaStatements.size()-1).equals(label)) {}
