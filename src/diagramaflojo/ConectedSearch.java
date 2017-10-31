@@ -18,6 +18,12 @@ public static ArrayList<Boolean> search(List<StatementLabel> actuales, int numer
 	ArrayList<Boolean> boleans = new ArrayList<Boolean>();
 	for(StatementLabel estado:actuales) {
 		if(estado.statement!=null) {
+			if(estado.statement instanceof IfStatement) {
+				if(estado.listaElse != null && !estado.listaElse.isEmpty()) {
+					searchAux(estado.listaElse,  boleans, numero);
+				}
+					
+			}
 			if(estado.labelsactual.active==true) {
 				estado.labelsactual.active=false;
 				Labels.debuggerImage(estado.labelsactual);
@@ -48,6 +54,12 @@ public static ArrayList<Boolean> search(List<StatementLabel> actuales, int numer
 private static void searchAux(ArrayList<StatementLabel> listaStatements, ArrayList<Boolean> boleans, int numero) {
 	for(StatementLabel estado:listaStatements) {
 		if(estado.statement!=null) {
+			if(estado.statement instanceof IfStatement) {
+				if(estado.listaElse != null && !estado.listaElse.isEmpty()) {
+					searchAux(estado.listaElse,  boleans, numero);
+				}
+					
+			}
 			if(estado.labelsactual.active==true) {
 				estado.labelsactual.active=false;
 				try {
@@ -83,8 +95,15 @@ public static ArrayList<Boolean> search2(List<StatementLabel> actuales, int nume
 	}
 	ArrayList<Boolean> boleans = new ArrayList<Boolean>();
 	for(StatementLabel estado:actuales) {
+
 		
 		if(estado.statement!=null) {
+			if(estado.statement instanceof IfStatement) {
+				if(estado.listaElse != null && !estado.listaElse.isEmpty()) {
+					searchAux2(estado.listaElse,  boleans, numero);
+				}
+					
+			}
 			if(estado.labelsactual.active==true) {
 	
 
@@ -113,6 +132,12 @@ public static ArrayList<Boolean> search2(List<StatementLabel> actuales, int nume
 private static void searchAux2(ArrayList<StatementLabel> listaStatements, ArrayList<Boolean> boleans, int numero) {
 	for(StatementLabel estado:listaStatements) {
 		if(estado.statement!=null) {
+			if(estado.statement instanceof IfStatement) {
+				if(estado.listaElse != null && !estado.listaElse.isEmpty()) {
+					searchAux2(estado.listaElse,  boleans, numero);
+				}
+					
+			}
 			if(estado.labelsactual.active==true) {
 			}
 		if(LeeGrafosAST.unit.getLineNumber(estado.statement.getStartPosition()) - 1==numero) {
